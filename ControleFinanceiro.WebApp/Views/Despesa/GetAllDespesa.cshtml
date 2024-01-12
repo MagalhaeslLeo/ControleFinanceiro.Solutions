@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ControleFinanceiro.Service.ServiceEntity.DespesaService>
+@{
+    ViewData["Title"] = "Lista de despesa";
+}
+<h2> Lista de despesas</h2>
+<div class="d-flex justify-content-end">
+    <button data-target="#createModal" data-toggle="modal" class="btn btn-success btn-create-despesa showModalButton4" data-url="@Url.Action("CreateDespesa")">Nova despesa</button>
+</div>
+<table class="tabeladespesa">
+    <thead>
+        <tr>
+            <th class="th-display">
+                @Html.DisplayName("Descrição")
+            </th>
+            <th class="th-display">
+                @Html.DisplayName("Data da despesa")
+            </th>
+            <th class="th-display">
+                @Html.DisplayName("Valor")
+            </th>
+            <th class="th-display">
+                @Html.DisplayName("Ações")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="descricao">
+                    @Html.DisplayFor(modelItem => item.descricao)
+                </td>
+                <td class="periodo">
+                    @Html.DisplayFor(modelItem => item.periodo)
+                </td>
+                <td class="valor">
+                    @Html.DisplayFor(modelItem => item.valor)
+                </td>
+                <td class="btn-opcao">
+                    <button type="button" data-toggle="modal" data-target="#editModal_@item.Id" class="btn btn-info showModalButton3" data-url="@Url.Action("EditDespesa", new { id = item.Id})'">
+                        Editar
+                    </button>
+                    @await Html.PartialAsync("EditDespesa", item)
+                    <button type="button" class="showModalButton2 btn btn-secondary" data-toggle="modal" data-target="#consultModal_@item.Id" data-url="@Url.Action("ConsultDespesa", new { id = item.Id})'">
+                        Consultar
+                    </button>
+                    @await Html.PartialAsync("ConsultDespesa", item)
+                    <button class="showModalDelete btn btn-danger" type="button" data-toggle="modal" data-target="#confirmDeleteModal_@item.Id" data-url="@Url.Action("DeleteDespesa", new { id = item.Id })'">
+                        Excluir
+                    </button>
+                    @await Html.PartialAsync("DeleteDespesa", item)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@await Html.PartialAsync("CreateDespesa", new ControleFinanceiro.Service.ServiceEntity.DespesaService())

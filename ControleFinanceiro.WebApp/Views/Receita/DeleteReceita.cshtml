@@ -1,0 +1,51 @@
+﻿@model ControleFinanceiro.Service.ServiceEntity.ReceitaService
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="modal fade" id="confirmDeleteModal_@Model.Id" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="container">
+                <div class="row">
+                    <form class="needs-validation" asp-action="DeleteReceita">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="modal-header">
+                            <h5 class="title-lable-dizimista"> Excluir Receita </h5>
+                            <a asp-action="GetAllReceita" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar">
+                            </a>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <input asp-for="Id" class="form-control" type="hidden" />
+                                <div class="col-md-6">
+                                    <label asp-for="descricao" class="control-label title-lable-dizimista">Descrição</label>
+                                    <input asp-for="descricao" class="form-control" readonly />
+                                    <span asp-validation-for="descricao" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="periodo" class="control-label title-lable-dizimista">Período</label>
+                                    <input asp-for="periodo" class="form-control" readonly />
+                                    <span asp-validation-for="periodo" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="valor" class="control-label title-lable-dizimista">Valor</label>
+                                    <input asp-for="valor" class="form-control" readonly />
+                                    <span asp-validation-for="valor" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="form-group form-inline">
+                                <div>
+                                    <input asp-action="DeleteReceita" type="submit" value="Excluir" class="btn btn-danger">
+                                    <a data-bs-dismiss="modal" style="margin-left:10px;" class=" btn btn-info">Voltar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
