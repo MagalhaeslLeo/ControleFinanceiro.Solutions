@@ -8,43 +8,71 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ControleFinanceiro.WebApp.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GerAllStyle/GetAll.css" />
+    <link rel="stylesheet" href="~/css/menu-principal.css" />
 
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ControleFinanceiro.WebApp</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Receita" asp-action="GetAllReceita">Receita</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Despesa" asp-action="GetAllDespesa">Despesa</a>
-                        </li>
-                    </ul>
-                </div>
+
+        <div class="header">
+
+            <div class="logo">
+
+                <div class="logo-img"></div>
+
             </div>
-        </nav>
+
+            <div class="titulo-modulo">
+                titulo
+            </div>
+
+            <div class="modulos-menu">
+
+                <div class="usuario">
+                    Usuário
+                </div>
+
+                <div class="modulos">
+
+                    <img src="~/icones/menu.png" />
+
+                    <nav class="menu-nav">
+                        <ul>
+                            <li>
+                                <a href="#">Cadastro</a>
+                            </li>
+
+                            <li>
+                                <a href="#">Administrativo</a>
+                            </li>
+
+                            <li>
+                                <a href="#">Financeiro</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+
+            </div>
+        </div>
+
+        <aside class="navigation">
+            <section>
+                <!--Menu lateral-->
+
+            </section>
+        </aside>
+
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer-gms text-muted">
         <div class="container">
             &copy; 2023 - ControleFinanceiro.WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

@@ -69,7 +69,7 @@ namespace SouDizimista.WebApp
             {
                 endpoints.MapControllerRoute(
                     name: "Home",
-                    pattern: "{controller=Despesa}/{action=GetAllDespesa}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
             app.UseEndpoints(endpoints =>
