@@ -84,7 +84,7 @@ header {
 }
 
 .menu-nav {
-	display:block;
+	display:none;
 	position: absolute;
 	z-index: 99;
 	margin-right: 116px;
