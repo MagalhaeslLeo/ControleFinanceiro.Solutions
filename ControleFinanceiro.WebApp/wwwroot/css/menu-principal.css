@@ -112,9 +112,12 @@ header {
 			display:flex;
 		}
 
-
-
-
+.img-menu {
+	cursor: pointer;
+}
+.menu-nav li a:hover {
+	color: #039090;
+}
 
 
 
