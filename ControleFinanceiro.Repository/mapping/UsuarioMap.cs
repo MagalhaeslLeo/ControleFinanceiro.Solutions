@@ -8,7 +8,7 @@ namespace ControleFinanceiro.Repository.mapping
     public class UsuarioMap : IEntityTypeConfiguration<Usuario> { 
     public void Configure(EntityTypeBuilder<Usuario> builder)
     {
-        builder.ToTable("Usuario");
+        builder.ToTable("CADUsuario");
         builder.HasQueryFilter(d => !d.IsDeleted);
     }
 }

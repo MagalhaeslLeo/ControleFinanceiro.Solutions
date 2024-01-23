@@ -23,6 +23,10 @@ namespace ControleFinanceiro.WebApp.Controllers
             return View();
         }
 
+        public ActionResult Cadastro() 
+        { 
+            return PartialView("_MenuDespesaReceita");
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
