@@ -25,14 +25,14 @@ namespace ControleFinanceiro.WebApp.Controllers
         }
 
         // GET: DespesaController/Details/5
-        public async Task <IActionResult> ConsultDespesa (Guid id)
+        public async Task<IActionResult> ConsultDespesa(Guid id)
         {
             var consulta = await service.GetById(id);
             return PartialView(consulta);
         }
 
         // GET: DespesaController/Create
-        public ActionResult CreateDespesa() 
+        public ActionResult CreateDespesa()
         {
             return PartialView();
         }
@@ -44,7 +44,7 @@ namespace ControleFinanceiro.WebApp.Controllers
         {
             try
             {
-              await service.AddSave(despesaService);
+                await service.AddSave(despesaService);
                 return RedirectToAction(nameof(GetAllDespesa));
             }
             catch
@@ -54,7 +54,7 @@ namespace ControleFinanceiro.WebApp.Controllers
         }
 
         // GET: DespesaController/Edit/5
-        public async Task <IActionResult> EditDespesa(Guid id)
+        public async Task<IActionResult> EditDespesa(Guid id)
         {
             var despesa = await service.GetById(id);
             return View(despesa);
@@ -79,14 +79,14 @@ namespace ControleFinanceiro.WebApp.Controllers
         // GET: DespesaController/Delete/5
         public async Task<IActionResult> DeleteDespesa(Guid id)
         {
-            var despesaDelete = await service.GetById(id); 
+            var despesaDelete = await service.GetById(id);
             return PartialView("DeleteDespesa", despesaDelete);
         }
 
         // POST: DespesaController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task <IActionResult> DeleteDespesa(DespesaService despesa)
+        public async Task<IActionResult> DeleteDespesa(DespesaService despesa)
         {
             try
             {

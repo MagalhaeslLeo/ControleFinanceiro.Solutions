@@ -14,6 +14,7 @@ namespace ControleFinanceiro.Repository.ContextDB
         public DbSet<Despesa> Despesa { get; set; }    
         public DbSet<Receita> Receita { get; set; }
         public DbSet<Usuario> CADUsuario { get; set; }
+        public DbSet<DemonstrativoFinanceiro> CADDemonstrativoFinanceiro { get; set; }
         public Context(DbContextOptions options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

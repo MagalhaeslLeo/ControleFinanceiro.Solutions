@@ -20,14 +20,14 @@ namespace ControleFinanceiro.Service.Services
         public ServiceDespesa(IMapper mapper, IDespesaRepository despesaRepository)
         {
             this.mapper = mapper;
-            this.despesaRepository= despesaRepository;
+            this.despesaRepository = despesaRepository;
         }
         public async Task AddSave(DespesaService despesa)
         {
             try
             {
                 var despesaEntidade = mapper.Map<Despesa>(despesa);
-               await despesaRepository.AddSave(despesaEntidade);
+                await despesaRepository.AddSave(despesaEntidade);
             }
             catch (Exception ex)
             {
@@ -71,9 +71,9 @@ namespace ControleFinanceiro.Service.Services
         {
             try
             {
-               var deletedDespesa = await despesaRepository.GetById(despesa.Id);
-               deletedDespesa.IsDeleted = true;
-               await despesaRepository.MarkDeleted(deletedDespesa);
+                var deletedDespesa = await despesaRepository.GetById(despesa.Id);
+                deletedDespesa.IsDeleted = true;
+                await despesaRepository.MarkDeleted(deletedDespesa);
             }
             catch (Exception ex)
             {
@@ -87,7 +87,7 @@ namespace ControleFinanceiro.Service.Services
             try
             {
                 var UpdateDespesa = mapper.Map<Despesa>(despesa);
-               var UpdateConvert = await despesaRepository.Update(UpdateDespesa);
+                var UpdateConvert = await despesaRepository.Update(UpdateDespesa);
                 var ConvertDespesa = mapper.Map<DespesaService>(UpdateConvert);
                 return ConvertDespesa;
 

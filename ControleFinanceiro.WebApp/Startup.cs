@@ -32,12 +32,14 @@ namespace SouDizimista.WebApp
                 services.AddRazorPages().AddMicrosoftIdentityUI();
                 services.AddScoped(typeof(IDespesaRepository), typeof(DespesaRepository));
                 services.AddScoped(typeof(IReceitaRepository), typeof(ReceitaRepository));
+                services.AddScoped(typeof(IDemonstrativoFinanceiroRepository), typeof(DemonstrativoFinanceiroRepository));
 
 
-                // Servicos
-                services.AddScoped(typeof(IServiceDespesa), typeof(ServiceDespesa));
+            // Servicos
+            services.AddScoped(typeof(IServiceDespesa), typeof(ServiceDespesa));
                 services.AddScoped(typeof(IServiceReceita), typeof(ServiceReceita));
-            }
+            services.AddScoped(typeof(IServiceDemonstrativoFinanceiro), typeof(ServiceDemonstrativoFinanceiro));
+        }
             // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
             public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
