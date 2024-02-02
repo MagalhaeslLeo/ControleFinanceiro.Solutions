@@ -1,24 +1,35 @@
-﻿<div>
-        <ul>
-            <li>
-            <!--Título do menu-->
-                Cadastro
-                <ul>
-                    <li>Despesa
-                        <ul>
-                            <li>
-                                Nossas despesas
-                            </li>
-                        </ul>
-                    </li>
-                    <li>Receita
-                        <ul>
-                            <li>
-                                Nossas receitas
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+﻿@model IEnumerable<ControleFinanceiro.Service.ServiceEntity.ModuloMenuService>
+@*
+@{
+    bool cadastroDisplayed = false;
+    bool administrativoDisplayed = false;
+    bool financeiroDisplayed = false;
+}*@
+
+@foreach (var menuItem in Model)
+{
+    @*@if (menuItem.UrlModulo == "Cadastro" && !cadastroDisplayed)
+    {
+        <p class="titulo-menu"> Cadastros </p>
+        cadastroDisplayed = true;
+    }
+
+    @if (menuItem.UrlModulo == "Administrativo" && !administrativoDisplayed)
+    {
+        <p class="titulo-menu"> Administração </p>
+        administrativoDisplayed = true;
+    }
+
+    @if (menuItem.UrlModulo == "Financeiro" && !financeiroDisplayed)
+    {
+        <p class="titulo-menu"> Finanças </p>
+        financeiroDisplayed = true;
+    }*@
+
+    <li class="list @(ViewContext.RouteData.Values["controller"]?.ToString() == menuItem.Controller && ViewContext.RouteData.Values["action"]?.ToString() == menuItem.Action ? "active" : "")">
+        <a asp-controller="@menuItem.Controller" asp-action="@menuItem.Action">
+            <span class="icon"><ion-icon name="@menuItem.Icon"></ion-icon></span>
+            <span class="title">@menuItem.Title</span>
+        </a>
+    </li>
+}

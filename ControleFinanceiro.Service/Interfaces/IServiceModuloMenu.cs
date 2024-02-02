@@ -1,4 +1,5 @@
 ﻿using ControleFinanceiro.Service.ServiceEntity;
+using ControleFinanceiro.Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,7 @@ namespace ControleFinanceiro.Service.Interfaces
         Task<ModuloMenuService> GetById (Guid id);
 
         Task<ModuloMenuService> Update(ModuloMenuService modulomenu);
+
+        List<ModuloMenuService> GetAllModuloMenu(string modulo);
     }
 }

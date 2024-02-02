@@ -15,10 +15,10 @@ namespace ControleFinanceiro.WebApp.Controllers
             this.service = service;
         }
 
-        public async Task<IActionResult> GetAllModuloMenu()
+        public IActionResult GetAllModuloMenu(string modulo)
         {
-            var listaModuloMenu = await service.GetAll();
-            return View(listaModuloMenu);
+            var listaModuloMenu = service.GetAllModuloMenu(modulo);
+            return PartialView("_MenuItemsPartial", listaModuloMenu);
         }
         public IActionResult Index()
         {

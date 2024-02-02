@@ -87,5 +87,13 @@ namespace ControleFinanceiro.Service.Services
                 throw new Exception(ex.Message, ex);
             }
         }
+        
+        public List<ModuloMenuService> GetAllModuloMenu(string modulo)
+        {
+
+            var menuModulo = moduloMenuRepository.GetAllModuloMenu(modulo);
+            var moduloConvert = mapper.Map<List<ModuloMenuService>>(menuModulo);
+            return moduloConvert;
+        }
     }
 }

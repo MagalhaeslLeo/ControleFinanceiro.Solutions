@@ -6,7 +6,7 @@
 
     $('#cadastro').click(function () {
         $.ajax({
-            url: "/Home/Cadastro", // URL do método na controller
+            url: "/ModuloMenu/GetAllModuloMenu", // URL do método na controller
             type: "GET",
             dataType: "html",
             success: function (data) {
