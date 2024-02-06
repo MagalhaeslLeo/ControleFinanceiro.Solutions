@@ -1,30 +1,30 @@
 ﻿@model IEnumerable<ControleFinanceiro.Service.ServiceEntity.ModuloMenuService>
-@*
+
 @{
     bool cadastroDisplayed = false;
     bool administrativoDisplayed = false;
     bool financeiroDisplayed = false;
-}*@
+}
 
 @foreach (var menuItem in Model)
 {
-    @*@if (menuItem.UrlModulo == "Cadastro" && !cadastroDisplayed)
+    @if (menuItem.UrlModule == "Cadastro" && !cadastroDisplayed)
     {
         <p class="titulo-menu"> Cadastros </p>
         cadastroDisplayed = true;
     }
 
-    @if (menuItem.UrlModulo == "Administrativo" && !administrativoDisplayed)
+    @if (menuItem.UrlModule == "Administrativo" && !administrativoDisplayed)
     {
         <p class="titulo-menu"> Administração </p>
         administrativoDisplayed = true;
     }
 
-    @if (menuItem.UrlModulo == "Financeiro" && !financeiroDisplayed)
+    @if (menuItem.UrlModule == "Financeiro" && !financeiroDisplayed)
     {
         <p class="titulo-menu"> Finanças </p>
         financeiroDisplayed = true;
-    }*@
+    }
 
     <li class="list @(ViewContext.RouteData.Values["controller"]?.ToString() == menuItem.Controller && ViewContext.RouteData.Values["action"]?.ToString() == menuItem.Action ? "active" : "")">
         <a asp-controller="@menuItem.Controller" asp-action="@menuItem.Action">

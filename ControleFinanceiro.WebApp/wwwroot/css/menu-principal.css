@@ -118,7 +118,11 @@ header {
 .menu-nav li a:hover {
 	color: #039090;
 }
-
+.funcionalidade {
+	display: flex;
+	padding: 20px 0px 0px 10px;
+	font-size: 16px;
+}
 
 
 
