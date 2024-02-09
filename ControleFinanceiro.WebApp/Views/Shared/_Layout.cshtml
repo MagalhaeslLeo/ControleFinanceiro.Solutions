@@ -6,8 +6,8 @@
     <title>@ViewData["Title"] - ControleFinanceiro.WebApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ControleFinanceiro.WebApp.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/GerAllStyle/GetAll.css" />
+@*    <link rel="stylesheet" href="~/ControleFinanceiro.WebApp.styles.css" asp-append-version="true" />
+*@    <link rel="stylesheet" href="~/GerAllStyle/GetAll.css" />
     <link rel="stylesheet" href="~/css/menu-principal.css" />
     <link href="~/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
@@ -35,12 +35,12 @@
 
                 <div class="modulos">
 
-                    <i class="bi bi-list img-menu h2" id="icon-suspenso"></i>  
+                    <i class="bi bi-list img-menu h2" id="menu-suspenso"></i>
 
-                    <nav class="menu-nav">
+                    <nav id="navigator" class="menu-nav">
                         <ul>
                             <li>
-                                <a href="#" id="cadastro">Cadastro</a>
+                                <a class="cad-menu" id="icon-suspenso" data-module="Cadastro">Cadastro</a>
                             </li>
 
                             <li>
@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <aside class="navigation" id="navigator">
+        <aside class="navigation" id="navigator-func">
             <section>
                 <h1 class="funcionalidade">Funcionalidades</h1>
                 <ul>

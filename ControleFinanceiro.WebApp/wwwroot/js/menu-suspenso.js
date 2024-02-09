@@ -1,22 +1,25 @@
 ﻿$(document).ready(function () {
 
-    $('#icon-suspenso').click(function () {
-        $(this).siblings(".menu-nav").toggle();
+    $('#menu-suspenso').click(function () {
+        document.querySelector('.menu-nav').style.display = 'block';
     });
 
-    $('#cadastro').click(function () {
+    $('#icon-suspenso').click(function () {
+        var moduleName = $(this).data('module');
+        loadMenu(moduleName);
+    });
+
+    function loadMenu(moduleName) {
         $.ajax({
-            url: "/ModuloMenu/GetAllModuloMenu", // URL do método na controller
-            type: "GET",
-            dataType: "html",
-            success: function (data) {
-                // Manipular os dados recebidos
-                debugger;
-                $("#navigator").html(data);
+            url: '/ModuloMenu/GetAllModuloMenu',
+            type: 'POST',
+            data: { module: moduleName },
+            success: function (response) {
+                $('#navigator-func ul').html(response);
             },
             error: function (error) {
                 console.log(error);
             }
         });
-    });
+    }
 });

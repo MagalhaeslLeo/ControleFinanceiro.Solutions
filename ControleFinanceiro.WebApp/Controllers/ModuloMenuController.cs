@@ -14,10 +14,10 @@ namespace ControleFinanceiro.WebApp.Controllers
         {
             this.service = service;
         }
-
-        public IActionResult GetAllModuloMenu(string modulo)
+        [HttpPost]
+        public IActionResult GetAllModuloMenu(string module)
         {
-            var listaModuloMenu = service.GetAllModuloMenu(modulo);
+            var listaModuloMenu = service.GetAllModuloMenu(module);
             return PartialView("_MenuItemsPartial", listaModuloMenu);
         }
         public IActionResult Index()

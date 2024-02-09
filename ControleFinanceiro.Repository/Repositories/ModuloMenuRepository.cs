@@ -10,7 +10,7 @@ namespace ControleFinanceiro.Repository.Repositories
     {
         public ModuloMenuRepository(Context context) : base(context) {}
 
-        public List<ModuloMenu> GetAllModuloMenu(string modulo)
+        public List<ModuloMenu> GetAllModuloMenu(string module)
         {
             var query = @"select 
                           Id,
@@ -20,10 +20,10 @@ namespace ControleFinanceiro.Repository.Repositories
                           Title,
                           UrlModule,
                           CreatedAt,
-                          Deleted
+                          IsDeleted
                           from ModuloMenu
                           where UrlModule = @modulo";
-            var queryReturn = context.ModuloMenu.FromSqlRaw(query, new SqlParameter("@modulo", modulo)).ToList();
+            var queryReturn = context.ModuloMenu.FromSqlRaw(query, new SqlParameter("@modulo", module)).ToList();
             return queryReturn;
         }
     }
