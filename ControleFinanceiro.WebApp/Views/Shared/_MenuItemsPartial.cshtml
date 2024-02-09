@@ -1,4 +1,7 @@
-﻿@model IEnumerable<ControleFinanceiro.Service.ServiceEntity.ModuloMenuService>
+﻿<head>
+    <link rel="stylesheet" href="~/css/menu-secundario.css" />
+</head>
+@model IEnumerable<ControleFinanceiro.Service.ServiceEntity.ModuloMenuService>
 
 @{
     bool cadastroDisplayed = false;
@@ -26,8 +29,8 @@
         financeiroDisplayed = true;
     }
 
-    <li class="list @(ViewContext.RouteData.Values["controller"]?.ToString() == menuItem.Controller && ViewContext.RouteData.Values["action"]?.ToString() == menuItem.Action ? "active" : "")">
-        <a asp-controller="@menuItem.Controller" asp-action="@menuItem.Action">
+    <li class=" item-menu list @(ViewContext.RouteData.Values["controller"]?.ToString() == menuItem.Controller && ViewContext.RouteData.Values["action"]?.ToString() == menuItem.Action ? "active" : "")">
+        <a class="link-menu" asp-controller="@menuItem.Controller" asp-action="@menuItem.Action">
             <span class="icon"><ion-icon name="@menuItem.Icon"></ion-icon></span>
             <span class="title">@menuItem.Title</span>
         </a>

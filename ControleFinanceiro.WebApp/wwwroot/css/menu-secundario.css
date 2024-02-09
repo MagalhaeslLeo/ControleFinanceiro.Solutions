@@ -1,0 +1,11 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+.item-menu {
+	list-style-type: none;
+}
+.link-menu {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.link-menu:hover {
+		color: #039090;
+}
