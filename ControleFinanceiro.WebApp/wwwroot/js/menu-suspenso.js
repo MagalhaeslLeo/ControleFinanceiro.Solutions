@@ -1,21 +1,16 @@
 ﻿$(document).ready(function () {
 
     $('#menu-suspenso').click(function () {
-        document.querySelector('.menu-nav').style.display = 'block';
+        loadMenuSuspenso();
     });
 
-    $('#icon-suspenso').click(function () {
-        var moduleName = $(this).data('module');
-        loadMenu(moduleName);
-    });
-
-    function loadMenu(moduleName) {
+    function loadMenuSuspenso() {
         $.ajax({
-            url: '/ModuloMenu/GetAllModuloMenu',
+            url: '/ModuloMenu/GetAllModuloMenuSuspenso',
             type: 'POST',
-            data: { module: moduleName },
             success: function (response) {
-                $('#navigator-func ul').html(response);
+                $('#navigator ul').html(response);
+                document.querySelector('.menu-nav').style.display = 'block';
             },
             error: function (error) {
                 console.log(error);

@@ -16,6 +16,8 @@ namespace ControleFinanceiro.Repository.ContextDB
         public DbSet<Usuario> CADUsuario { get; set; }
         public DbSet<DemonstrativoFinanceiro> CADDemonstrativoFinanceiro { get; set; }
         public DbSet<ModuloMenu> ModuloMenu { get; set; }
+
+        public DbSet<ModuloMenuSuspenso> ModuloMenuSuspenso { get; set; }
         public Context(DbContextOptions options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

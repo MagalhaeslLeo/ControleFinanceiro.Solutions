@@ -14,7 +14,7 @@ namespace ControleFinanceiro.Repository.mapping
     {
         public void Configure(EntityTypeBuilder<ModuloMenu> builder)
         {
-            builder.ToTable("ModuloMenu");
+            builder.ToTable("SEGModuloMenu");
             builder.HasQueryFilter(d => !d.IsDeleted);
         }
     }

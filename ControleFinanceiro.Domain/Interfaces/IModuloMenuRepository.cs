@@ -10,5 +10,6 @@ namespace ControleFinanceiro.Domain.Interfaces
     public interface IModuloMenuRepository : IRepositoryBase<ModuloMenu>
     {
         List<ModuloMenu> GetAllModuloMenu(string modulo);
+        List<ModuloMenuSuspenso> GetAllModuloMenuSuspenso();
     }
 }

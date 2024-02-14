@@ -20,5 +20,6 @@ namespace ControleFinanceiro.Service.Interfaces
         Task<ModuloMenuService> Update(ModuloMenuService modulomenu);
 
         List<ModuloMenuService> GetAllModuloMenu(string modulo);
+        List<ModuloMenuSuspensoService> GetAllModuloMenuSuspenso();
     }
 }

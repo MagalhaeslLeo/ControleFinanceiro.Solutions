@@ -13,6 +13,7 @@ namespace ControleFinanceiro.Service.Mapper
             CreateMap<Usuario, UsuarioService>().ReverseMap();
             CreateMap<DemonstrativoFinanceiro, DemonstrativoFinanceiroService>().ReverseMap();
             CreateMap<ModuloMenu, ModuloMenuService>().ReverseMap();
+            CreateMap<ModuloMenuSuspenso, ModuloMenuSuspensoService>().ReverseMap();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace ControleFinanceiro.Repository.mapping
     {
         public void Configure(EntityTypeBuilder<Despesa> builder)
         {
-            builder.ToTable("Despesa");
+            builder.ToTable("CADDespesa");
             builder.HasQueryFilter(d => !d.IsDeleted);
         }
     }

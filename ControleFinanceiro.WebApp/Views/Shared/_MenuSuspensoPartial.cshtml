@@ -1,0 +1,39 @@
+﻿<head>
+    <link rel="stylesheet" href="~/css/menu-secundario.css" />
+</head>
+@model IEnumerable<ControleFinanceiro.Service.ServiceEntity.ModuloMenuSuspensoService>
+
+@foreach (var menuItem in Model)
+{
+
+    <li class=" item-menu list @(ViewContext.RouteData.Values["controller"]?.ToString() == menuItem.UrlFuncionalidade && ViewContext.RouteData.Values["action"]?.ToString() == menuItem.NomeFuncionalidade ? "active" : "")">
+        <a class="cad-menu" id="icon-suspenso" data-module="@menuItem.UrlFuncionalidade">
+            <span class="title">@menuItem.NomeFuncionalidade</span>
+        </a>
+    </li>
+}
+<script>
+    $(document).ready(function () {
+
+        $('#icon-suspenso').click(function () {
+            var moduleName = $(this).data('module');
+            
+            loadMenu(moduleName);
+        });
+
+        function loadMenu(moduleName) {
+            $.ajax({
+                url: '/ModuloMenu/GetAllModuloMenu',
+                type: 'POST',
+                data: { module: moduleName },
+                success: function (response) {
+                    $('#navigator-func ul').html(response);
+                    document.querySelector('.navigation').style.display = 'block';
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+    });
+</script>

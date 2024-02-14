@@ -15,6 +15,12 @@ namespace ControleFinanceiro.WebApp.Controllers
             this.service = service;
         }
         [HttpPost]
+        public IActionResult GetAllModuloMenuSuspenso()
+        {
+            var listaModulo = service.GetAllModuloMenuSuspenso();
+            return PartialView("_MenuSuspensoPartial", listaModulo);
+        }
+        [HttpPost]
         public IActionResult GetAllModuloMenu(string module)
         {
             var listaModuloMenu = service.GetAllModuloMenu(module);

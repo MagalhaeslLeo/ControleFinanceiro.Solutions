@@ -95,5 +95,11 @@ namespace ControleFinanceiro.Service.Services
             var moduloConvert = mapper.Map<List<ModuloMenuService>>(menuModulo);
             return moduloConvert;
         }
+        public List<ModuloMenuSuspensoService> GetAllModuloMenuSuspenso()
+        {
+            var menuModulo = moduloMenuRepository.GetAllModuloMenuSuspenso();
+            var moduloConvert = mapper.Map<List<ModuloMenuSuspensoService>>(menuModulo);
+            return moduloConvert;
+        }
     }
 }
