@@ -2,6 +2,7 @@
 
     $('#menu-suspenso').click(function () {
         loadMenuSuspenso();
+        $('#spinner-div').show();
     });
 
     function loadMenuSuspenso() {
@@ -11,6 +12,9 @@
             success: function (response) {
                 $('#navigator ul').html(response);
                 document.querySelector('.menu-nav').style.display = 'block';
+            },
+            complete: function () {
+                $('#spinner-div').hide();
             },
             error: function (error) {
                 console.log(error);

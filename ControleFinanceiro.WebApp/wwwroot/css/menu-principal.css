@@ -122,10 +122,12 @@ header {
 	display: flex;
 	padding: 20px 0px 0px 10px;
 	font-size: 16px;
+	color: #395050;
 }
 .cad-menu{
 	cursor: pointer;
 }
+
 
 
 
