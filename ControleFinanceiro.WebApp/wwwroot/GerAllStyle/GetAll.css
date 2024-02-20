@@ -8,7 +8,7 @@
 
 }
 .tabeladespesa{
-	width: 1130px;
+	width: 1000px;
 }
 
 	.tabeladespesa td, .tabeladespesa th {
@@ -54,7 +54,7 @@
 }
 
 .tabelareceita {
-	width: 1130px;
+	width: 1000px;
 }
 
 	.tabelareceita td, .tabelareceita th {
@@ -81,4 +81,7 @@
 .btn-create-receita {
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+.showModalButton4{
+	margin-right: 115px;
 }
