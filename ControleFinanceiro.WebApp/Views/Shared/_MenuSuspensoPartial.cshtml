@@ -28,7 +28,7 @@
                 data: { module: moduleName },
                 success: function (response) {
                     $('#navigator-func ul').html(response);
-                    document.querySelector('.navigation').style.display = 'block';
+                    document.querySelector('.menu-nav').style.display = 'none';
                 },
                 error: function (error) {
                     console.log(error);

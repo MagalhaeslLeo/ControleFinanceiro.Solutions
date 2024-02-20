@@ -78,3 +78,22 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<script>
+    $(document).ready(function () {
+    function loadMenuSuspenso() {
+        $.ajax({
+            url: '/Home/GetAllModuloMenuSuspenso',
+            type: 'GET',
+            success: function (response) {
+                $('#navigator ul').html(response);
+                document.querySelector('.menu-nav').style.display = 'block';
+            },
+            complete: function () {
+                $('#spinner-div').hide();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+</script>
