@@ -37,17 +37,17 @@
                     @Html.DisplayFor(modelItem => item.valor)
                 </td>
                 <td class="btn-opcao">
-                    <button type="button" data-toggle="modal" data-target="#editModal_@item.Id" class="btn btn-info showModalButton3" data-url="@Url.Action("EditDespesa", new { id = item.Id})'">
-                        Editar
-                    </button>
+                    <a data-toggle="tooltip" data-placement="top" data-original-title="Editar" data-target="#editModal_@item.Id" class="showModalButton3 btn btn-primary" data-url="@Url.Action("EditDespesa", new { id = item.Id})'">
+                        <i class="bi bi-pencil-square h3"></i>
+                    </a>
                     @await Html.PartialAsync("EditDespesa", item)
-                    <button type="button" class="showModalButton2 btn btn-secondary" data-toggle="modal" data-target="#consultModal_@item.Id" data-url="@Url.Action("ConsultDespesa", new { id = item.Id})'">
-                        Consultar
-                    </button>
+                    <a class="showModalButton2 btn btn-secondary" data-toggle="tooltip" data-placement= "top" data-original-title="Consultar" data-target="#consultModal_@item.Id" data-url="@Url.Action("ConsultDespesa", new { id = item.Id})'">
+                        <i class="bi bi-card-checklist h3"></i>
+                    </a>
                     @await Html.PartialAsync("ConsultDespesa", item)
-                    <button class="showModalDelete btn btn-danger" type="button" data-toggle="modal" data-target="#confirmDeleteModal_@item.Id" data-url="@Url.Action("DeleteDespesa", new { id = item.Id })'">
-                        Excluir
-                    </button>
+                    <a class="showModalDelete btn btn-danger" data-toggle="tooltip" data-placement="top" data-original-title="Excluir" data-target="#confirmDeleteModal_@item.Id" data-url="@Url.Action("DeleteDespesa", new { id = item.Id })'">
+                        <i class="bi bi-trash h3"></i>
+                    </a>
                     @await Html.PartialAsync("DeleteDespesa", item)
                 </td>
             </tr>

@@ -76,24 +76,28 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/menu-suspenso.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
-<script>
-    $(document).ready(function () {
-    function loadMenuSuspenso() {
-        $.ajax({
-            url: '/Home/GetAllModuloMenuSuspenso',
-            type: 'GET',
-            success: function (response) {
-                $('#navigator ul').html(response);
-                document.querySelector('.menu-nav').style.display = 'block';
-            },
-            complete: function () {
-                $('#spinner-div').hide();
-            },
-            error: function (error) {
-                console.log(error);
+    <script>
+        $(document).ready(function () {
+            $('#spinner-div').show();
+            loadMenuSuspenso();
+            function loadMenuSuspenso() {
+                $.ajax({
+                    url: '/ModuloMenu/GetAllModuloMenuSuspenso',
+                    type: 'POST',
+                    success: function (response) {
+                        $('#navigator ul').html(response);                      
+                        //  document.querySelector('.menu-nav').style.display = 'block';
+                    },
+                    complete: function () {
+                        $('#spinner-div').hide();
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
             }
         });
-    });
-</script>
+    </script>
+
+</body>
+</html>
