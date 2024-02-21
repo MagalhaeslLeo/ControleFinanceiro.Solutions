@@ -2,10 +2,11 @@
 @{
     ViewData["Title"] = "Lista de despesa";
 }
+<div class="containerdespesa">
 <h2> Lista de despesas</h2>
-<div class="d-flex justify-content-end">
-    <button data-target="#createModal" data-toggle="modal" class="btn btn-success btn-create-despesa showModalButton4" data-url="@Url.Action("CreateDespesa")">Nova despesa</button>
-</div>
+    <a data-target="#createModal" data-toggle="tooltip" data-placement="top" data-original-title="Nova Despesa" class="btn btn-success btn-create-despesa showModalButton4" data-url="@Url.Action("CreateDespesa")">
+        <i class="bi bi-plus-square h3"></i>
+    </a>
 <table class="tabeladespesa">
     <thead>
         <tr>
@@ -54,4 +55,5 @@
         }
     </tbody>
 </table>
+</div>
 @await Html.PartialAsync("CreateDespesa", new ControleFinanceiro.Service.ServiceEntity.DespesaService())
