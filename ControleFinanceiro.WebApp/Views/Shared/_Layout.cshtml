@@ -6,8 +6,9 @@
     <title>@ViewData["Title"] - ControleFinanceiro.WebApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-@*    <link rel="stylesheet" href="~/ControleFinanceiro.WebApp.styles.css" asp-append-version="true" />
-*@    <link rel="stylesheet" href="~/GerAllStyle/GetAll.css" />
+    @*    <link rel="stylesheet" href="~/ControleFinanceiro.WebApp.styles.css" asp-append-version="true" />
+    *@
+    <link rel="stylesheet" href="~/GerAllStyle/GetAll.css" />
     <link rel="stylesheet" href="~/css/menu-principal.css" />
     <link href="~/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
@@ -53,7 +54,7 @@
         <aside class="navigation" id="navigator-func">
             <section>
                 <h1 class="funcionalidade">Funcionalidades</h1>
-                <ul> <!--Menu lateral--></ul>  
+                <ul> <!--Menu lateral--></ul>
 
             </section>
         </aside>
@@ -62,7 +63,9 @@
 
     <div class="container">
         <main role="main" class="pb-3">
+            <div id="dynamic-list">
             @RenderBody()
+            </div>
         </main>
     </div>
 
@@ -76,6 +79,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/menu-suspenso.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
     <script>
         $(document).ready(function () {
             $('#spinner-div').show();
@@ -85,7 +89,7 @@
                     url: '/ModuloMenu/GetAllModuloMenuSuspenso',
                     type: 'POST',
                     success: function (response) {
-                        $('#navigator ul').html(response);                      
+                        $('#navigator ul').html(response);
                         //  document.querySelector('.menu-nav').style.display = 'block';
                     },
                     complete: function () {
@@ -97,6 +101,23 @@
                 });
             }
         });
+
+            $('.item-menu').click(function () {
+                function loadMenu(moduleName) {
+                    $.ajax({
+                        url: '/Despesa/GetAllDespesa',
+                        type: 'GET',
+                        data: { module: moduleName },
+                        success: function (response) {
+                            $('#dynamic-list').html(response);
+                            // document.querySelector('.menu-nav').style.display = 'none';
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                }
+            });
     </script>
 
 </body>

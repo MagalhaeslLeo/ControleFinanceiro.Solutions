@@ -30,9 +30,30 @@
     }
 
     <li class=" item-menu list @(ViewContext.RouteData.Values["controller"]?.ToString() == menuItem.Controller && ViewContext.RouteData.Values["action"]?.ToString() == menuItem.Action ? "active" : "")">
-        <a class="link-menu" asp-controller="@menuItem.Controller" asp-action="@menuItem.Action">
+        <a class="link-menu" @* asp-controller="@menuItem.Controller" asp-action="@menuItem.Action"*@>
             <span class="icon"><ion-icon name="@menuItem.Icon"></ion-icon></span>
             <span class="title">@menuItem.Title</span>
         </a>
     </li>
 }
+@*<script>
+    $(document).ready(function () {
+
+        $('.item-menu').click(function () {
+            function loadMenu(moduleName) {
+                $.ajax({
+                    url: '/Despesa/GetAllDespesa',
+                    type: 'GET',
+                    data: { module: moduleName },
+                    success: function (response) {
+                        $('#dynamic-list').html(response);
+                        // document.querySelector('.menu-nav').style.display = 'none';
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            }
+        });
+    });
+</script>*@

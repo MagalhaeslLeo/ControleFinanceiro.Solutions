@@ -17,7 +17,7 @@
 
         $('#icon-suspenso').click(function () {
             var moduleName = $(this).data('module');
-            
+
             loadMenu(moduleName);
         });
 
@@ -28,7 +28,7 @@
                 data: { module: moduleName },
                 success: function (response) {
                     $('#navigator-func ul').html(response);
-                    document.querySelector('.menu-nav').style.display = 'none';
+                   // document.querySelector('.menu-nav').style.display = 'none';
                 },
                 error: function (error) {
                     console.log(error);
