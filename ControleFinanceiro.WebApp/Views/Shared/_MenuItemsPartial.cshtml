@@ -29,31 +29,41 @@
         financeiroDisplayed = true;
     }
 
-    <li class=" item-menu list @(ViewContext.RouteData.Values["controller"]?.ToString() == menuItem.Controller && ViewContext.RouteData.Values["action"]?.ToString() == menuItem.Action ? "active" : "")">
-        <a class="link-menu" @* asp-controller="@menuItem.Controller" asp-action="@menuItem.Action"*@>
+    <li data-controller="@menuItem.Controller" data-action="@menuItem.Action" class=" item-menu list @(ViewContext.RouteData.Values["controller"]?.ToString() == menuItem.Controller && ViewContext.RouteData.Values["action"]?.ToString() == menuItem.Action ? "active" : "")">
+        <a class="link-menu" @* asp-controller="@menuItem.Controller" asp-action="@menuItem.Action" *@>
             <span class="icon"><ion-icon name="@menuItem.Icon"></ion-icon></span>
             <span class="title">@menuItem.Title</span>
         </a>
     </li>
 }
-@*<script>
+<script>
     $(document).ready(function () {
 
-        $('.item-menu').click(function () {
-            function loadMenu(moduleName) {
-                $.ajax({
-                    url: '/Despesa/GetAllDespesa',
-                    type: 'GET',
-                    data: { module: moduleName },
-                    success: function (response) {
-                        $('#dynamic-list').html(response);
-                        // document.querySelector('.menu-nav').style.display = 'none';
-                    },
-                    error: function (error) {
-                        console.log(error);
-                    }
-                });
-            }
+        // Carrega a Partial View ao clicar em um elemento com a classe link-menu
+        $('.item-menu').click(function (e) {
+
+            e.preventDefault(); // Impede o comportamento padrão do link
+
+            var controller = $(this).data('controller');
+            var action = $(this).data('action');
+
+            loadPartialView(controller, action);
         });
+
+        function loadPartialView(controller, action) {
+            $.ajax({
+                url: '/' + controller + '/' + action,
+                type: 'GET',
+                success: function (response) {
+                    $('#dynamic-list').html(response);
+                },
+                complete: function () {
+                    $('#spinner-div').hide();
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
     });
-</script>*@
+</script>

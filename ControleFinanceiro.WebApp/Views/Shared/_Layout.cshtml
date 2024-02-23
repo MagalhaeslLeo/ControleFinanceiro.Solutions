@@ -100,23 +100,6 @@
                     }
                 });
             }
-        });
-
-            $('.item-menu').click(function () {
-                function loadMenu(moduleName) {
-                    $.ajax({
-                        url: '/Despesa/GetAllDespesa',
-                        type: 'GET',
-                        data: { module: moduleName },
-                        success: function (response) {
-                            $('#dynamic-list').html(response);
-                            // document.querySelector('.menu-nav').style.display = 'none';
-                        },
-                        error: function (error) {
-                            console.log(error);
-                        }
-                    });
-                }
             });
     </script>
 
