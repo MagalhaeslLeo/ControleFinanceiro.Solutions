@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ControleFinanceiro.Service.ServiceEntity.ReceitaService>
+@{
+    ViewData["Title"] = "Lista de receita";
+}
+<div class="containerdespesa">
+    <h2> Lista de receitas</h2>
+    <a data-target="#createModal" data-toggle="tooltip" data-placement="top" data-original-title="Nova Receita" class="btn btn-success btn-create-receita showModalButton4" data-url="@Url.Action("CreateReceita")">
+        <i class="bi bi-plus-square h3"></i>
+    </a>
+    <table class="tabelareceita">
+        <thead>
+            <tr>
+                <th class="th-display">
+                    @Html.DisplayName("Descrição")
+                </th>
+                <th class="th-display">
+                    @Html.DisplayName("Data da receita")
+                </th>
+                <th class="th-display">
+                    @Html.DisplayName("Valor")
+                </th>
+                <th class="th-display">
+                    @Html.DisplayName("Ações")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="descricao">
+                        @Html.DisplayFor(modelItem => item.descricao)
+                    </td>
+                    <td class="periodo">
+                        @Html.DisplayFor(modelItem => item.periodo)
+                    </td>
+                    <td class="valor">
+                        @Html.DisplayFor(modelItem => item.valor)
+                    </td>
+                    <td class="btn-opcao">
+                        <a data-toggle="tooltip" data-placement="top" data-original-title="Editar" data-target="#editModal_@item.Id" class="btn btn-info showModalButton3" data-url="@Url.Action("EditReceita", new { id = item.Id})'">
+                            <i class="bi bi-pencil-square h3"></i>
+                        </a>
+                        @await Html.PartialAsync("EditReceita", item)
+                        <a class="showModalButton2 btn btn-secondary" data-toggle="tooltip" data-placement="top" data-original-title="Consultar" data-target="#consultModal_@item.Id" data-url="@Url.Action("ConsultReceita", new { id = item.Id})'">
+                            <i class="bi bi-card-checklist h3"></i>
+                        </a>
+                        @await Html.PartialAsync("ConsultReceita", item)
+                        <a class="showModalDelete btn btn-danger" data-toggle="tooltip" data-placement="top" data-original-title="Excluir" data-target="#confirmDeleteModal_@item.Id" data-url="@Url.Action("DeleteReceita", new { id = item.Id })'">
+                            <i class="bi bi-trash h3"></i>
+                        </a>
+                        @await Html.PartialAsync("DeleteReceita", item)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@await Html.PartialAsync("CreateReceita", new ControleFinanceiro.Service.ServiceEntity.ReceitaService())

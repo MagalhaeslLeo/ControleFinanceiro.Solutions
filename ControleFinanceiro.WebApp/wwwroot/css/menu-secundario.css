@@ -5,6 +5,7 @@
 .link-menu {
 	color: #FFFFFF;
 	text-decoration: none;
+	cursor: pointer;
 }
 .link-menu:hover {
 		color: #039090;

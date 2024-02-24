@@ -16,7 +16,7 @@ namespace ControleFinanceiro.WebApp.Controllers
         public async Task<IActionResult> GetAllReceita()
         {
             var listaReceita = await service.GetAll();
-            return View(listaReceita);
+            return PartialView("_GetAllReceita", listaReceita);
         }
         // GET: ReceitaController
         public IActionResult Index()
