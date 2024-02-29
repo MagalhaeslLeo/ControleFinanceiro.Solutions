@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ControleFinanceiro.WebApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @*    <link rel="stylesheet" href="~/ControleFinanceiro.WebApp.styles.css" asp-append-version="true" />
+    *@
+    <link rel="stylesheet" href="~/GerAllStyle/GetAll.css" />
+    <link rel="stylesheet" href="~/css/menu-principal.css" />
+    <link href="~/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="spinner-div" class="pt-5">
+        <div class="spinner-border text-primary" role="status">
+        </div>
+    </div>
+    <header>
+
+        <div class="header">
+
+            <div class="logo">
+
+                <div class="logo-img"></div>
+
+            </div>
+
+            <div class="titulo-modulo">
+                titulo
+            </div>
+
+            <div class="modulos-menu">
+
+                <div class="usuario">
+                    <i class="bi bi-person-fill h4"></i>
+                </div>
+
+                <div class="modulos">
+
+                    <i class="bi bi-list img-menu h2" id="menu-suspenso"></i>
+
+                    <nav id="navigator" class="menu-nav">
+                        <ul><!--Menu Suspenso--></ul>
+                    </nav>
+
+                </div>
+
+            </div>
+        </div>
+
+        <aside class="navigation" id="navigator-func">
+            <section>
+                <h1 class="funcionalidade">Funcionalidades</h1>
+                <ul> <!--Menu lateral--></ul>
+
+            </section>
+        </aside>
+
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div id="dynamic-list">
+            @RenderBody()
+            </div>
+        </main>
+    </div>
+
+    <footer class="border-top footer-gms text-muted">
+        <div class="container">
+            &copy; 2023 - ControleFinanceiro.WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/menu-suspenso.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+            $('#spinner-div').show();
+            loadMenuSuspenso();
+            function loadMenuSuspenso() {
+                $.ajax({
+                    url: '/ModuloMenu/GetAllModuloMenuSuspenso',
+                    type: 'POST',
+                    success: function (response) {
+                        $('#navigator ul').html(response);
+                    },
+                    complete: function () {
+                        $('#spinner-div').hide();
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            }
+            });
+    </script>
+
+</body>
+</html>

@@ -1,59 +1,100 @@
-﻿@model IEnumerable<ControleFinanceiro.Service.ServiceEntity.DespesaService>
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div class=" container ">
+    <div class="row">
+        <div class="col-lg-12">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <h3 class="card-title">
+                        Clientes
+                    </h3>
+
+                    <div class="card-toolbar">
+                        <a href="@Url.Action("CreateClientContract", "ClientContract")"><i class="fas fa-plus"></i> Adicionar</a>
+                    </div>
+
+                </div>
+
+                <div class="card-body">
+                    <div class="datatable datatable-bordered" id="kt_datatable" style=""></div>
+                </div>
+            </div>
+
+
+
+            <!--end::Card-->
+        </div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="~/js/Despesa/ListaDespesa.js"></script>
+
+ }
+
+
+
+
+@*@model IEnumerable<ControleFinanceiro.Service.ServiceEntity.DespesaService>
 @{
     ViewData["Title"] = "Lista de despesa";
 }
 <div class="containerdespesa">
-<h2> Lista de despesas</h2>
+    <h2> Lista de despesas</h2>
     <a data-target="#createModal" data-toggle="tooltip" data-placement="top" data-original-title="Nova Despesa" class="btn btn-success btn-create-despesa showModalButton4" data-url="@Url.Action("CreateDespesa")">
         <i class="bi bi-plus-square h3"></i>
     </a>
-<table class="tabeladespesa">
-    <thead>
-        <tr>
-            <th class="th-display">
-                @Html.DisplayName("Descrição")
-            </th>
-            <th class="th-display">
-                @Html.DisplayName("Data da despesa")
-            </th>
-            <th class="th-display">
-                @Html.DisplayName("Valor")
-            </th>
-            <th class="th-display">
-                @Html.DisplayName("Ações")
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="tabeladespesa">
+        <thead>
             <tr>
-                <td class="descricao">
-                    @Html.DisplayFor(modelItem => item.descricao)
-                </td>
-                <td class="periodo">
-                    @Html.DisplayFor(modelItem => item.periodo)
-                </td>
-                <td class="valor">
-                    @Html.DisplayFor(modelItem => item.valor)
-                </td>
-                <td class="btn-opcao">
-                    <a data-toggle="tooltip" data-placement="top" data-original-title="Editar" data-target="#editModal_@item.Id" class="showModalButton3 btn btn-primary" data-url="@Url.Action("EditDespesa", new { id = item.Id})'">
-                        <i class="bi bi-pencil-square h3"></i>
-                    </a>
-                    @await Html.PartialAsync("EditDespesa", item)
-                    <a class="showModalButton2 btn btn-secondary" data-toggle="tooltip" data-placement= "top" data-original-title="Consultar" data-target="#consultModal_@item.Id" data-url="@Url.Action("ConsultDespesa", new { id = item.Id})'">
-                        <i class="bi bi-card-checklist h3"></i>
-                    </a>
-                    @await Html.PartialAsync("ConsultDespesa", item)
-                    <a class="showModalDelete btn btn-danger" data-toggle="tooltip" data-placement="top" data-original-title="Excluir" data-target="#confirmDeleteModal_@item.Id" data-url="@Url.Action("DeleteDespesa", new { id = item.Id })'">
-                        <i class="bi bi-trash h3"></i>
-                    </a>
-                    @await Html.PartialAsync("DeleteDespesa", item)
-                </td>
+                <th class="th-display">
+                    @Html.DisplayName("Descrição")
+                </th>
+                <th class="th-display">
+                    @Html.DisplayName("Data da despesa")
+                </th>
+                <th class="th-display">
+                    @Html.DisplayName("Valor")
+                </th>
+                <th class="th-display">
+                    @Html.DisplayName("Ações")
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="descricao">
+                        @Html.DisplayFor(modelItem => item.descricao)
+                    </td>
+                    <td class="periodo">
+                        @Html.DisplayFor(modelItem => item.periodo)
+                    </td>
+                    <td class="valor">
+                        @Html.DisplayFor(modelItem => item.valor)
+                    </td>
+                    <td class="btn-opcao">
+                        <a data-toggle="tooltip" data-placement="top" data-original-title="Editar" data-target="#editModal_@item.Id" class="showModalButton3 btn btn-primary" data-url="@Url.Action("EditDespesa", new { id = item.Id})'">
+                            <i class="bi bi-pencil-square h3"></i>
+                        </a>
+                        @await Html.PartialAsync("EditDespesa", item)
+                        <a class="showModalButton2 btn btn-secondary" data-toggle="tooltip" data-placement="top" data-original-title="Consultar" data-target="#consultModal_@item.Id" data-url="@Url.Action("ConsultDespesa", new { id = item.Id})'">
+                            <i class="bi bi-card-checklist h3"></i>
+                        </a>
+                        @await Html.PartialAsync("ConsultDespesa", item)
+                        <a class="showModalDelete btn btn-danger" data-toggle="tooltip" data-placement="top" data-original-title="Excluir" data-target="#confirmDeleteModal_@item.Id" data-url="@Url.Action("DeleteDespesa", new { id = item.Id })'">
+                            <i class="bi bi-trash h3"></i>
+                        </a>
+                        @await Html.PartialAsync("DeleteDespesa", item)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
-@await Html.PartialAsync("CreateDespesa", new ControleFinanceiro.Service.ServiceEntity.DespesaService())
+
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await Html.PartialAsync("CreateDespesa", new ControleFinanceiro.Service.ServiceEntity.DespesaService())*@
