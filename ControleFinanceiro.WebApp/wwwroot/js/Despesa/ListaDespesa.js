@@ -13,8 +13,7 @@ var DataContractStatus = function () {
                 type: 'remote',
                 source: {
                     read: {
-                        /*url: '/api/ApiContractClient/GetAllContractClient/'*/
-                        url: '/Controllers/Despesa/GetAllDespesa/'
+                        url: '/api/ApiDespesa/GetDespesa/'
                     }
                 },
                 pageSize: 10,
@@ -43,7 +42,7 @@ var DataContractStatus = function () {
             columns: [                
                 {
 
-                    field: 'Descricao',
+                    field: 'descricao',
                     title: 'Descrição',
                     sortable: 'asc',
                     type: 'text',
@@ -53,8 +52,8 @@ var DataContractStatus = function () {
 
                 {
 
-                    field: 'nomeFantasia',
-                    title: 'Nome Fantasia',
+                    field: 'periodo',
+                    title: 'Data da despesa',
                     sortable: 'asc',
                     type: 'text',
                     selector: false,
@@ -63,24 +62,13 @@ var DataContractStatus = function () {
 
 
                 {
-                    field: 'razaoSocial',
-                    title: 'Razão Social',
+                    field: 'valor',
+                    title: 'Valor',
                     sortable: 'asc',
                     type: 'text',
                     selector: false,
                     textAlign: 'left',
                 },
-
-                {
-
-                    field: 'telefone',
-                    title: 'Telefone',
-                    sortable: 'asc',
-                    type: 'text',
-                    selector: false,
-                    textAlign: 'left',
-                },
-
                 {
                     field: 'Actions',
                     title: 'Ações',
@@ -90,10 +78,10 @@ var DataContractStatus = function () {
                     autoHide: false,
                     template: function (item) {
                         return '\
-                            <a href="/ClientContract/ReadOnlyClientContract/'+ item.id + '" class="btn btn-sm btn-clean btn-icon mr-2">\
+                            <a href="/Despesa/ConsultDespesa/'+ item.id + '" class="btn btn-sm btn-clean btn-icon mr-2">\
                                 <i class="far fa-eye"></i>\
                             </a>\
-                            <a href="/ClientContract/EditClientContract/'+ item.id + '" class="btn btn-sm btn-clean btn-icon mr-2 update">\
+                            <a href="/Despesa/EditDespesa/'+ item.id + '" class="btn btn-sm btn-clean btn-icon mr-2 update">\
                                 <i class="fas fa-pencil-alt"></i>\
                             </a>\
                              <a data-id="' + item.id + '" class="btn btn-sm btn-clean btn-icon mr-2 btn-deletar-item delete">\

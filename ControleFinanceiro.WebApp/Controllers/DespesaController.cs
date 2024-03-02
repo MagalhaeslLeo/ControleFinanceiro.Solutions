@@ -13,11 +13,17 @@ namespace ControleFinanceiro.WebApp.Controllers
         {
             this.service = service;
         }
-        public async Task<IActionResult> GetAllDespesa()
+        //public async Task<IActionResult> GetAllDespesa()
+        //{
+        //    var listaDespesa = await service.GetAll();
+        //    return Ok(listaDespesa);
+        //}
+
+        public IActionResult GetAllDespesa()
         {
-            var listaDespesa = await service.GetAll();
-            return View(listaDespesa);
+            return View("GetAllDespesa");
         }
+
         // GET: DespesaController
         public IActionResult Index()
         {
@@ -34,7 +40,7 @@ namespace ControleFinanceiro.WebApp.Controllers
         // GET: DespesaController/Create
         public ActionResult CreateDespesa()
         {
-            return PartialView();
+            return View();
         }
 
         // POST: DespesaController/Create
