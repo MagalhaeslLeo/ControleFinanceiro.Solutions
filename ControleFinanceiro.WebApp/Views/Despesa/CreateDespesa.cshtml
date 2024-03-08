@@ -1,13 +1,4 @@
-﻿@model ControleFinanceiro.Service.ServiceEntity.DespesaService
-
-@{
-    ViewData["Title"] = "CreateDespesa";
-}
-
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
+﻿
 <div class="container">
 
     <div class="row">
@@ -15,33 +6,30 @@
         <div class="col-lg-12">
             <div class="card card-custom">
 
-                <form id="frmClient">
-
-                    <input type="hidden" name="Id" id="Id" value="@ViewBag.Id" />
-                    <input type="hidden" name="action" id="action" value="@ViewBag.Acao" />
-
+                <form id="frmDespesa">
                     <div class="card-body">
 
                         <br />
-                        <h2 class="text-dark font-weight-bold">Dados do Cliente</h2>
+                        <h2 class="text-dark font-weight-bold">Dados da Despesa</h2>
                         <hr /> <br />
 
                         <div class="row form-group">
-                            <div class="col-5">
+
+                            <div class="col-4">
                                 <label>Descrição</label>
-                                <input class="form-control readOnly" type="text" data-viacep="cnpj" data-receitaws="cnpj" id="cnpj" name="descricao" />
+                                <input class="form-control readOnly" type="text" name="descricao" />
                             </div>
 
-                        <div class="form-group row">
-                            <div class="col-6">
+                            @*<div class="col-4">
                                 <label>Período</label>
-                                <input name="periodo" class="form-control btnaction readOnly" type="datetime" data-viacep="nome" data-receitaws="nome" value="" id="razaoSocial" />
+                                <input name="periodo" class="form-control btnaction readOnly" type="date" />
                             </div>
 
-                            <div class="col-6">
-                                <label>Valor</label>
-                                <input name="valor" class="form-control btnaction readOnly" type="number" data-viacep="fantasia" data-receitaws="nome" value="" id="nomeFantasia" />
-                            </div>
+                            <div class="col-4">
+                                <label>Valor (R$)</label>
+                                <input name="valor" class="form-control btnaction readOnly" type="number" data-inputmask="'alias': 'currency', 'prefix': '', 
+                                'groupSeparator': '.', 'radixPoint': ',', 'digits': 2" placeholder="(R$): " />
+                            </div>*@
                         </div>
 
                     </div>
@@ -57,57 +45,8 @@
 
 @section Scripts{
 
-    <script src="~/js/ClientContract/ClientContract.js"></script>
+    <script src="~/js/Despesa/AdicionarDespesa.js"></script>
 
 }
 
 
-@*<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="container">
-                <div class="row">
-                    <form class="needs-validation" asp-asp-controller="Despesa" asp-action="CreateDespesa">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="modal-header">
-                            <h5 class="title-lable-dizimista"> Criar Despesa </h5>
-                            <a asp-action="GetAllDespesa" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar">
-                            </a>
-                            <hr />
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label asp-for="descricao" class="control-label title-lable-dizimista">Descrição</label>
-                                    <input asp-for="descricao" class="form-control" />
-                                </div>
-                                <div class="col-md-6">
-                                    <label asp-for="periodo" class="control-label title-lable-dizimista">Período</label>
-                                    <input asp-for="periodo" class="form-control" />
-                                    <span asp-validation-for="periodo" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-6">
-                                    <label asp-for="valor" class="control-label title-lable-dizimista">Valor</label>
-                                    <input asp-for="valor" class="form-control" />
-                                    <span asp-validation-for="valor" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <hr />
-                            <div>
-
-                                <div class="form-group form-inline">
-                                    <div>
-                                        <input type="submit" value="Salvar" class="btn btn-primary">
-                                        <a class=" btn btn-info" data-bs-dismiss="modal">Voltar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>*@

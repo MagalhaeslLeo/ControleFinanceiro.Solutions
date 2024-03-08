@@ -1,9 +1,11 @@
 ﻿using ControleFinanceiro.Service.Interfaces;
+using ControleFinanceiro.Service.ServiceEntity;
+using ControleFinanceiro.Service.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControleFinanceiro.WebApp.API
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]")] 
     [ApiController]
     public class ApiDespesaController : ControllerBase
     {
@@ -19,6 +21,13 @@ namespace ControleFinanceiro.WebApp.API
         {
             var listaDespesa = await service.GetAll();
             return Ok(listaDespesa);
+        }
+        [HttpPost]
+        [Route("AdicionarDespesa")]
+        public async Task<IActionResult> AdicionarDespesa([FromBody] DespesaService serviceDespesa)
+        {
+            await service.AddSave(serviceDespesa);
+            return Ok();
         }
     }
 }

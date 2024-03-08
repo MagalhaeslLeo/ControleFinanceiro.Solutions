@@ -38,26 +38,26 @@ namespace ControleFinanceiro.WebApp.Controllers
         }
 
         // GET: DespesaController/Create
-        public ActionResult CreateDespesa()
+        public IActionResult CreateDespesa()
         {
-            return View();
+            return View("CreateDespesa");
         }
 
         // POST: DespesaController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateDespesa(DespesaService despesaService)
-        {
-            try
-            {
-                await service.AddSave(despesaService);
-                return RedirectToAction(nameof(GetAllDespesa));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> CreateDespesa(DespesaService despesaService)
+        //{
+        //    try
+        //    {
+        //        await service.AddSave(despesaService);
+        //        return RedirectToAction(nameof(GetAllDespesa));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // GET: DespesaController/Edit/5
         public async Task<IActionResult> EditDespesa(Guid id)

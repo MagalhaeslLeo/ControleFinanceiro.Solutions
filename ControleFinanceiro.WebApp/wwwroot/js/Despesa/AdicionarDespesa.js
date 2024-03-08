@@ -32,7 +32,7 @@
 					casing: "lower"
 				}
 			}
-		});	
+		});
 	}
 
 	return {
@@ -47,7 +47,7 @@ jQuery(document).ready(function () {
 	KTInputmask.init();
 });
 
- var frmSave = (function () {
+var frmSave = (function () {
 	$('#btnbuscarcnpj').on('click', function () {
 		if ($('#cnpj').val() !== '') {
 			var button = $(this);
@@ -59,7 +59,7 @@ jQuery(document).ready(function () {
 				contentType: 'application/json'
 			}).done(function (response) {
 				Object.keys(response).forEach(item => {
-					$('[data-receitaws="'+item+'"]').val(response[item]);
+					$('[data-receitaws="' + item + '"]').val(response[item]);
 					$('[data-receitaws="' + item + '"]').removeAttr('disabled');
 				});
 
@@ -86,11 +86,13 @@ jQuery(document).ready(function () {
 			});
 		}
 	});
+
 	$('#btnSalvar').on('click', function () {
-		var frmClient = $('#frmClient');
+
+		var frmDespesa = $('#frmDespesa');
 		var post = {}
 
-		frmClient.serializeArray().forEach(item => {
+		frmDespesa.serializeArray().forEach(item => {
 			post[item.name] = item.value || null;
 		});
 
@@ -98,15 +100,15 @@ jQuery(document).ready(function () {
 
 		$.ajax({
 			method: 'POST',
-			url: '/Api/ApiContractClient/SaveClient',
+			url: '/api/ApiDespesa/AdicionarDespesa', 
 			data: json,
 			contentType: 'application/json',
 		}).done(function (response) {
-			
+
 			if (response === true) {
 				Swal.fire({
 					title: "Negado !",
-					text: "Cliente já Cadastrado",
+					text: "Despesa já Cadastrada",
 					icon: "error",
 					buttonsStyling: false,
 					confirmButtonText: "Ok!",
@@ -130,7 +132,7 @@ jQuery(document).ready(function () {
 					window.location.href = "/ClientContract/GetClientAllContract";
 				});
 			}
-				if (response === false) {
+			if (response === false) {
 				Swal.fire({
 					title: "Negado !",
 					text: "Cnpj não pode ser Alterado",
@@ -143,7 +145,7 @@ jQuery(document).ready(function () {
 				}).then(function () {
 					window.location.href = "/ClientContract/GetClientAllContract";
 				});
-			    }
+			}
 		});
 	});
 	if ($('#Id').val() !== '') {
@@ -151,7 +153,7 @@ jQuery(document).ready(function () {
 			method: 'Get',
 			url: '/api/ApiContractClient/GetClientById?Id=' + $('#Id').val(),
 		}).done(function (response) {
-			Object.keys(response).forEach((item) =>{
+			Object.keys(response).forEach((item) => {
 				$('#' + item).val(response[item])
 			});
 			if ($('#action').val() === 'Consult') {
@@ -159,14 +161,14 @@ jQuery(document).ready(function () {
 				$('.readOnly').prop("disabled", true);
 				$('.btnHide').hide();
 				$('a.voltar').text('Voltar');
-            }
+			}
 		});
-	 }
-     if ($('#Id').val() !== '') {
+	}
+	if ($('#Id').val() !== '') {
 
-         $('#cnpj').attr('readonly', 'readonly');
-		 // $('#cnpj').prop("disabled", true);
-		 $('#cnpj').addClass('form-control-solid');
-         $('#btnbuscarcnpj').hide();
-     }
+		$('#cnpj').attr('readonly', 'readonly');
+		// $('#cnpj').prop("disabled", true);
+		$('#cnpj').addClass('form-control-solid');
+		$('#btnbuscarcnpj').hide();
+	}
 })(); 
