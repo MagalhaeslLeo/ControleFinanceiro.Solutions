@@ -116,7 +116,7 @@ var frmSave = (function () {
 						confirmButton: "btn btn-success"
 					}
 				}).then(function () {
-					window.location.href = "/ClientContract/GetClientAllContract";
+					window.location.href = "/Despesa/GetAllDespesa";
 				});
 			} else {
 				Swal.fire({
@@ -129,7 +129,7 @@ var frmSave = (function () {
 						confirmButton: "btn btn-success"
 					}
 				}).then(function () {
-					window.location.href = "/ClientContract/GetClientAllContract";
+					window.location.href = "/Despesa/GetAllDespesa";
 				});
 			}
 			if (response === false) {
@@ -143,7 +143,7 @@ var frmSave = (function () {
 						confirmButton: "btn btn-success"
 					}
 				}).then(function () {
-					window.location.href = "/ClientContract/GetClientAllContract";
+					window.location.href = "/Despesa/GetAllDespesa";
 				});
 			}
 		});

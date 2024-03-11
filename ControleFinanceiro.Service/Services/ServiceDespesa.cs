@@ -67,11 +67,11 @@ namespace ControleFinanceiro.Service.Services
             }
         }
 
-        public async Task MarkDeleted(DespesaService despesa)
+        public async Task MarkDeleted(Guid Id)
         {
             try
             {
-                var deletedDespesa = await despesaRepository.GetById(despesa.Id);
+                var deletedDespesa = await despesaRepository.GetById(Id);
                 deletedDespesa.IsDeleted = true;
                 await despesaRepository.MarkDeleted(deletedDespesa);
             }

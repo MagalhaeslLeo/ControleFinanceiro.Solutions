@@ -111,7 +111,7 @@ var DataContractStatus = function () {
 
                     $.ajax({
                         method: 'POST',
-                        url: '/Api/ApiContractClient/MarkAsDeleted/' + delet,
+                        url: '/Api/ApiDespesa/DeleteDespesa/' + delet,
                     }).done(function (response) {
 
                         Swal.fire({

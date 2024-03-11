@@ -26,8 +26,35 @@ namespace ControleFinanceiro.WebApp.API
         [Route("AdicionarDespesa")]
         public async Task<IActionResult> AdicionarDespesa([FromBody] DespesaService serviceDespesa)
         {
-            await service.AddSave(serviceDespesa);
-            return Ok();
+            try
+            {
+                await service.AddSave(serviceDespesa);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                throw (new Exception(ex.Message, ex));
+            }
+
+        }
+
+        [HttpPost("DeleteDespesa")]
+        [Route("DeleteDespesa/{id:Guid}")]
+        public async Task<IActionResult> DeleteDespesa([FromRoute] Guid Id)
+        {
+            try
+            {
+                if (Id != Guid.Empty)
+                {
+                  await service.MarkDeleted(Id);
+                }
+                
+                return Ok();
+            }
+            catch(Exception ex) 
+            {
+               throw(new Exception(ex.Message, ex));
+            }
         }
     }
 }

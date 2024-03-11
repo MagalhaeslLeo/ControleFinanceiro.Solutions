@@ -83,26 +83,26 @@ namespace ControleFinanceiro.WebApp.Controllers
         }
 
         // GET: DespesaController/Delete/5
-        public async Task<IActionResult> DeleteDespesa(Guid id)
-        {
-            var despesaDelete = await service.GetById(id);
-            return PartialView("DeleteDespesa", despesaDelete);
-        }
+        //public async Task<IActionResult> DeleteDespesa(Guid id)
+        //{
+        //    var despesaDelete = await service.GetById(id);
+        //    return PartialView("DeleteDespesa", despesaDelete);
+        //}
 
         // POST: DespesaController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteDespesa(DespesaService despesa)
-        {
-            try
-            {
-                await service.MarkDeleted(despesa);
-                return RedirectToAction(nameof(GetAllDespesa));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteDespesa(DespesaService despesa)
+        //{
+        //    try
+        //    {
+        //        await service.MarkDeleted(despesa);
+        //        return RedirectToAction(nameof(GetAllDespesa));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
     }
 }
