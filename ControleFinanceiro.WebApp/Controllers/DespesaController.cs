@@ -43,27 +43,11 @@ namespace ControleFinanceiro.WebApp.Controllers
             return View("CreateDespesa");
         }
 
-        // POST: DespesaController/Create
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> CreateDespesa(DespesaService despesaService)
-        //{
-        //    try
-        //    {
-        //        await service.AddSave(despesaService);
-        //        return RedirectToAction(nameof(GetAllDespesa));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        // GET: DespesaController/Edit/5
-        public async Task<IActionResult> EditDespesa(Guid id)
+        public IActionResult EditDespesa(Guid Id)
         {
-            var despesa = await service.GetById(id);
-            return View(despesa);
+            ViewBag.Id = Id;
+            ViewBag.Action = "Edit";
+            return View("CreateDespesa");
         }
 
         // POST: DespesaController/Edit/5

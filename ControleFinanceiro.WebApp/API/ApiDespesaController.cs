@@ -56,5 +56,13 @@ namespace ControleFinanceiro.WebApp.API
                throw(new Exception(ex.Message, ex));
             }
         }
+
+        [HttpGet]
+        [Route("GetByIdDespesa")]
+        public async Task<IActionResult> GetByIdDespesa(Guid Id)
+        {
+            var despesa = await service.GetById(Id);
+            return Ok(despesa);
+        }
     }
 }
