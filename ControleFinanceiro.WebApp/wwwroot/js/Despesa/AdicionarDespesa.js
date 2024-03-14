@@ -95,7 +95,7 @@ var frmSave = (function () {
         post = {
             id: $('[name="Id"]').val || null,
             descricao: $('[name="descricao"]').val() || null,
-            periodo: $('[name="periodo"]').val() || null,
+            periodo: new Date($('[name="periodo"]').val()) || null,
             valor: $('[name="valor"]').val() || null
         };
 
@@ -162,13 +162,23 @@ var frmSave = (function () {
             method: 'Get',
             url: '/api/ApiDespesa/GetByIdDespesa?Id=' + $('#Id').val(),
         }).done(function (response) {
-            Object.keys(response).forEach((item) => {
-                $('#' + item).val(response[item]);
-                id: $('[name="Id"]').val() = item.id.val() || null;
-                descricao: $('[name="descricao"]').val() = item.descricao.val();
-                periodo: $('[name="periodo"]').val() = item.periodo;
-                valor: $('[name="valor"]').val() = item.valor;
-            });
+
+            $('#descricao').val(response.descricao);
+
+            var periodo = new Date(response.periodo);
+            var periodoFormatado = periodo.toLocaleDateString('pt-BR');
+
+            $('#periodo').val(periodoFormatado);
+            $('#valor').val(response.valor);
+
+            //Object.keys(response).forEach((item) => {
+            //    $('#' + item).val(response[item]);
+            //    id: $('[name="Id"]').val(response[item]);
+            //    descricao: $('[name="descricao"]').val(response[item]);
+            //    periodo: $('[name="periodo"]').val(response[item]);
+            //    valor: $('[name="valor"]').val(response[item]);
+            //});
+
             if ($('#action').val() === 'Consult') {
                 $('.readOnly').attr('readonly', 'readonly');
                 $('.readOnly').prop("disabled", true);
