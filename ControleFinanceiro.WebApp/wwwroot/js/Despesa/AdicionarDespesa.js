@@ -85,17 +85,19 @@ var frmSave = (function () {
                 button.removeClass('spinner spinner-white spinner-right');
             });
         }
-    });
+    }); 
 
     $('#btnSalvar').on('click', function () {
 
-        //var frmDespesa = $('#frmDespesa');
+        var periodoDate = $('[name="periodo"]').val();
+        var periodoValue = new Date(periodoDate);
+        var periodoFormatado = periodoValue ? periodoValue.toISOString() : null;
         var post = {};
 
         post = {
             id: $('[name="Id"]').val || null,
             descricao: $('[name="descricao"]').val() || null,
-            periodo: new Date($('[name="periodo"]').val()) || null,
+            periodo: periodoFormatado,
             valor: $('[name="valor"]').val() || null
         };
 

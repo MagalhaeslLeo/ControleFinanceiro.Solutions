@@ -63,7 +63,6 @@ namespace ControleFinanceiro.WebApp.API
         public async Task<IActionResult> GetByIdDespesa(Guid Id)
         {
             var despesa = await service.GetById(Id);
-            despesa.periodo = despesa.periodo.ToUniversalTime().ToString("dd/MM/yyyy HH:mm:ss", CultureInfo.CreateSpecificCulture("pt-BR"));
             return Ok(despesa);
         }
     }

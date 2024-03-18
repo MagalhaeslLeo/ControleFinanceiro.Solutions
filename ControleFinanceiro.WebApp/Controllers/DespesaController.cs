@@ -13,12 +13,6 @@ namespace ControleFinanceiro.WebApp.Controllers
         {
             this.service = service;
         }
-        //public async Task<IActionResult> GetAllDespesa()
-        //{
-        //    var listaDespesa = await service.GetAll();
-        //    return Ok(listaDespesa);
-        //}
-
         public IActionResult GetAllDespesa()
         {
             return View("GetAllDespesa");
@@ -31,10 +25,11 @@ namespace ControleFinanceiro.WebApp.Controllers
         }
 
         // GET: DespesaController/Details/5
-        public async Task<IActionResult> ConsultDespesa(Guid id)
+        public IActionResult ConsultDespesa(Guid id)
         {
-            var consulta = await service.GetById(id);
-            return PartialView(consulta);
+            ViewBag.Id = id;
+            ViewBag.Action = "Consult";
+            return View("CreateDespesa");
         }
 
         // GET: DespesaController/Create
@@ -65,28 +60,5 @@ namespace ControleFinanceiro.WebApp.Controllers
                 return View();
             }
         }
-
-        // GET: DespesaController/Delete/5
-        //public async Task<IActionResult> DeleteDespesa(Guid id)
-        //{
-        //    var despesaDelete = await service.GetById(id);
-        //    return PartialView("DeleteDespesa", despesaDelete);
-        //}
-
-        // POST: DespesaController/Delete/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteDespesa(DespesaService despesa)
-        //{
-        //    try
-        //    {
-        //        await service.MarkDeleted(despesa);
-        //        return RedirectToAction(nameof(GetAllDespesa));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
     }
 }
