@@ -48,49 +48,15 @@ jQuery(document).ready(function () {
 });
 
 var frmSave = (function () {
-    $('#btnbuscarcnpj').on('click', function () {
-        if ($('#cnpj').val() !== '') {
-            var button = $(this);
-            button.addClass('spinner spinner-white spinner-right');
-
-            $.ajax({
-                method: 'GET',
-                url: '/api/ApiContractClient/GetAddressBycnpj?cnpj=' + $('#cnpj').val(),
-                contentType: 'application/json'
-            }).done(function (response) {
-                Object.keys(response).forEach(item => {
-                    $('[data-receitaws="' + item + '"]').val(response[item]);
-                    $('[data-receitaws="' + item + '"]').removeAttr('disabled');
-                });
-
-                button.removeClass('spinner spinner-white spinner-right');
-            });
-        }
-    });
-    $('#btnbuscarCep').on('click', function () {
-        if ($('#cep').val() !== '') {
-            var button = $(this);
-            button.addClass('spinner spinner-white spinner-right');
-
-            $.ajax({
-                method: 'GET',
-                url: '/api/ApiContractClient/GetAddressByCep?cep=' + $('#cep').val(),
-                contentType: 'application/json'
-            }).done(function (response) {
-                Object.keys(response).forEach(item => {
-                    $('[data-viacep="' + item + '"]').val(response[item]);
-                    $('[data-viacep="' + item + '"]').removeAttr('disabled');
-                });
-
-                button.removeClass('spinner spinner-white spinner-right');
-            });
-        }
-    }); 
-
+  
     $('#btnSalvar').on('click', function () {
 
         var periodoDate = $('[name="periodo"]').val();
+        // Criando novo objeto do tipo Date com o valor vindo do formulário e colocado na variável periodoValue
+
         var periodoValue = new Date(periodoDate);
+
+        // Convertendo o valor do objeto do tipo Date para um objeto do tipo DateTime
         var periodoFormatado = periodoValue ? periodoValue.toISOString() : null;
         var post = {};
 
@@ -100,10 +66,6 @@ var frmSave = (function () {
             periodo: periodoFormatado,
             valor: $('[name="valor"]').val() || null
         };
-
-        //frmDespesa.serializeArray().forEach(item => {
-        //	post[item.name] = item.value || null;
-        //});
 
         var json = JSON.stringify(post);
 
@@ -141,24 +103,10 @@ var frmSave = (function () {
                     window.location.href = "/Despesa/GetAllDespesa";
                 });
             }
-            if (response === false) {
-                Swal.fire({
-                    title: "Negado !",
-                    text: "Cnpj não pode ser Alterado",
-                    icon: "error",
-                    buttonsStyling: false,
-                    confirmButtonText: "Ok!",
-                    customClass: {
-                        confirmButton: "btn btn-success"
-                    }
-                }).then(function () {
-                    window.location.href = "/Despesa/GetAllDespesa";
-                });
-            }
+
         });
     });
 
-    debugger;
     if ($('#Id').val() !== '') {
         $.ajax({
             method: 'Get',
@@ -172,14 +120,6 @@ var frmSave = (function () {
 
             $('#periodo').val(periodoFormatado);
             $('#valor').val(response.valor);
-
-            //Object.keys(response).forEach((item) => {
-            //    $('#' + item).val(response[item]);
-            //    id: $('[name="Id"]').val(response[item]);
-            //    descricao: $('[name="descricao"]').val(response[item]);
-            //    periodo: $('[name="periodo"]').val(response[item]);
-            //    valor: $('[name="valor"]').val(response[item]);
-            //});
 
             if ($('#action').val() === 'Consult') {
                 $('.readOnly').attr('readonly', 'readonly');

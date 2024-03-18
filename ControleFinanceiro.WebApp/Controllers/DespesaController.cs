@@ -45,20 +45,5 @@ namespace ControleFinanceiro.WebApp.Controllers
             return View("CreateDespesa");
         }
 
-        // POST: DespesaController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditDespesa(DespesaService despesaService)
-        {
-            try
-            {
-                var despesa = await service.Update(despesaService);
-                return RedirectToAction(nameof(GetAllDespesa));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

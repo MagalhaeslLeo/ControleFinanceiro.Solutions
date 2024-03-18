@@ -13,11 +13,15 @@ namespace ControleFinanceiro.WebApp.Controllers
         {
             this.service = service;
         }
-        public async Task<IActionResult> GetAllReceita()
+        public IActionResult GetAllReceita()
         {
-            var listaReceita = await service.GetAll();
-            return View(listaReceita);
+            return View("GetAllReceita");
         }
+        //public async Task<IActionResult> GetAllReceita()
+        //{
+        //    var listaReceita = await service.GetAll();
+        //    return View(listaReceita);
+        //}
         // GET: ReceitaController
         public IActionResult Index()
         {
