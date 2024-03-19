@@ -10,7 +10,7 @@ namespace ControleFinanceiro.Service.Interfaces
     public interface IServiceReceita
     {
         Task AddSave(ReceitaService receita);
-        Task MarkDeleted(ReceitaService receita);
+        Task MarkDeleted(Guid Id);
 
         Task<IEnumerable<ReceitaService>> GetAll();
  
