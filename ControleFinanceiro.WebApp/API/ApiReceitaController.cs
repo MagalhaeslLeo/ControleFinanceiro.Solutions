@@ -40,9 +40,10 @@ namespace ControleFinanceiro.WebApp.API
         {
             try
             {
-                if (Id != Guid.Empty)
+                var receita = await serviceReceita.GetById(Id);
+                if (receita != null)
                 {
-                    await serviceReceita.MarkDeleted(Id);
+                    await serviceReceita.MarkDeleted(receita);
                 }
                 return Ok();
             }

@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\GerAllStyle\GetAll.css" />
     <None Include="wwwroot\js\Despesa\ListaDespesa.js" />
     <None Include="wwwroot\js\ContractIndexReadjustment\ListIndexReadjustment.js" />
     <None Include="wwwroot\js\ContractIndexReadjustment\ReadIndexReadjusment.js" />
