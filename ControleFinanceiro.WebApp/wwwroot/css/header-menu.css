@@ -1,7 +1,12 @@
 ﻿.bg-default {
 	background-color: #0e8080 !important;
-	justify-content: center;
 }
 .color-default{
 	color: #ffffff !important;
+}
+a {
+	cursor: pointer;
+}
+.search-bar{
+	margin-left: 570px;
 }
