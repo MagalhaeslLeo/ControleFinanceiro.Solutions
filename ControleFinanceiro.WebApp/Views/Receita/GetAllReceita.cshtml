@@ -1,59 +1,37 @@
-﻿@model IEnumerable<ControleFinanceiro.Service.ServiceEntity.ReceitaService>
-@{
-    ViewData["Title"] = "Lista de receita";
-}
-<div class="containerdespesa">
-<h2> Lista de receitas</h2>
-    <a data-target="#createModal" data-toggle="tooltip" data-placement="top" data-original-title="Nova Receita" class="btn btn-success btn-create-receita showModalButton4" data-url="@Url.Action("CreateReceita")">
-        <i class="bi bi-plus-square h3"></i>
-    </a>
-<table class="tabelareceita">
-    <thead>
-        <tr>
-            <th class="th-display">
-                @Html.DisplayName("Descrição")
-            </th>
-            <th class="th-display">
-                @Html.DisplayName("Data da receita")
-            </th>
-            <th class="th-display">
-                @Html.DisplayName("Valor")
-            </th>
-            <th class="th-display">
-                @Html.DisplayName("Ações")
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td class="descricao">
-                    @Html.DisplayFor(modelItem => item.descricao)
-                </td>
-                <td class="periodo">
-                    @Html.DisplayFor(modelItem => item.periodo)
-                </td>
-                <td class="valor">
-                    @Html.DisplayFor(modelItem => item.valor)
-                </td>
-                <td class="btn-opcao">
-                    <a  data-toggle="tooltip" data-placement="top" data-original-title="Editar" data-target="#editModal_@item.Id" class="btn btn-info showModalButton3" data-url="@Url.Action("EditReceita", new { id = item.Id})'">
-                        <i class="bi bi-pencil-square h3"></i>
-                    </a>
-                    @await Html.PartialAsync("EditReceita", item)
-                    <a  class="showModalButton2 btn btn-secondary" data-toggle="tooltip" data-placement="top" data-original-title="Consultar" data-target="#consultModal_@item.Id" data-url="@Url.Action("ConsultReceita", new { id = item.Id})'">
-                        <i class="bi bi-card-checklist h3"></i>
-                    </a>
-                    @await Html.PartialAsync("ConsultReceita", item)
-                    <a class="showModalDelete btn btn-danger" data-toggle="tooltip" data-placement="top" data-original-title="Excluir" data-target="#confirmDeleteModal_@item.Id" data-url="@Url.Action("DeleteReceita", new { id = item.Id })'">
-                        <i class="bi bi-trash h3"></i>
-                    </a>
-                    @await Html.PartialAsync("DeleteReceita", item)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+﻿
+<div class=" container ">
+    <div class="row">
+        <div class="col-lg-12">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                    <h3 class="card-title">
+                        Despesas
+                    </h3>
+
+                    <div class="card-toolbar">
+                        <a href="@Url.Action("CreateReceita", "Receita")"><i class="fas fa-plus"></i> Adicionar</a>
+                    </div>
+
+                </div>
+
+                <div class="card-body">
+                    <div class="datatable datatable-bordered" id="kt_datatable" style=""></div>
+                </div>
+            </div>
+
+
+
+            <!--end::Card-->
+        </div>
+    </div>
 </div>
-@await Html.PartialAsync("CreateReceita", new ControleFinanceiro.Service.ServiceEntity.ReceitaService())
+@section Scripts {
+
+    <script src="~/js/Receita/ListaReceita.js"></script>
+
+ }
+
+
+
+
