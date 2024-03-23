@@ -1,5 +1,6 @@
-﻿.bg-default {
+﻿.navbar-default {
 	background-color: #0e8080 !important;
+	height: 80px;
 }
 .color-default{
 	color: #ffffff !important;
