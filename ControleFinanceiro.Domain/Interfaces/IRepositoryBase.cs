@@ -14,7 +14,7 @@ namespace ControleFinanceiro.Domain.Interfaces
 
         Task<IEnumerable<T>> GetAll();
 
-        Task <T> GetById(Guid id);
+        Task <T> GetById(Guid? id);
 
         Task <T> Update(T entity);
     }

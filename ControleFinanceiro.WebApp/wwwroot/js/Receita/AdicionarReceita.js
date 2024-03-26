@@ -61,7 +61,7 @@ var frmSave = (function () {
         var post = {};
 
         post = {
-            id: $('[name="Id"]').val || null,
+            id: $('[name="id"]').val() || null,
             descricao: $('[name="descricao"]').val() || null,
             periodo: periodoFormatado,
             valor: $('[name="valor"]').val() || null
@@ -71,7 +71,7 @@ var frmSave = (function () {
 
         $.ajax({
             method: 'POST',
-            url: '/api/ApiDespesa/AdicionarDespesa',
+            url: '/api/ApiReceita/AdicionarReceita',
             data: json,
             contentType: 'application/json',
         }).done(function (response) {
@@ -79,7 +79,7 @@ var frmSave = (function () {
             if (response === true) {
                 Swal.fire({
                     title: "Negado !",
-                    text: "Despesa já Cadastrada",
+                    text: "Receita já Cadastrada",
                     icon: "error",
                     buttonsStyling: false,
                     confirmButtonText: "Ok!",
@@ -87,7 +87,7 @@ var frmSave = (function () {
                         confirmButton: "btn btn-success"
                     }
                 }).then(function () {
-                    window.location.href = "/Despesa/GetAllDespesa";
+                    window.location.href = "/Receita/GetAllReceita";
                 });
             } else {
                 Swal.fire({
@@ -100,7 +100,7 @@ var frmSave = (function () {
                         confirmButton: "btn btn-success"
                     }
                 }).then(function () {
-                    window.location.href = "/Despesa/GetAllDespesa";
+                    window.location.href = "/Receita/GetAllReceita";
                 });
             }
 
@@ -110,7 +110,7 @@ var frmSave = (function () {
     if ($('#Id').val() !== '') {
         $.ajax({
             method: 'Get',
-            url: '/api/ApiDespesa/GetByIdDespesa?Id=' + $('#Id').val(),
+            url: '/api/ApiReceita/GetByIdReceita?Id=' + $('#Id').val(),
         }).done(function (response) {
 
             $('#descricao').val(response.descricao);
@@ -124,8 +124,16 @@ var frmSave = (function () {
             if ($('#action').val() === 'Consult') {
                 $('.readOnly').attr('readonly', 'readonly');
                 $('.readOnly').prop("disabled", true);
+                $('.readOnly').css('background-color', '#EBEBE4');
                 $('.btnHide').hide();
                 $('a.voltar').text('Voltar');
+            }
+            else 
+            {
+                if ($('#action').val() === 'Edit')
+                {
+
+                }
             }
         });
     }

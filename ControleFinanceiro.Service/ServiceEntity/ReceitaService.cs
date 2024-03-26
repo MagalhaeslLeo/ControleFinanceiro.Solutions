@@ -8,7 +8,7 @@ namespace ControleFinanceiro.Service.ServiceEntity
 {
     public class ReceitaService
     {
-        public Guid Id { get; set; }  
+        public Guid? Id { get; set; }  
         public decimal valor { get; set; }
 
         public string descricao { get; set; }

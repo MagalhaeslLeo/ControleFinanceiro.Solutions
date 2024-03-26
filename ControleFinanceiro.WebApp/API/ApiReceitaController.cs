@@ -26,6 +26,11 @@ namespace ControleFinanceiro.WebApp.API
         {
             try
             {
+                if (receitaService.Id != Guid.Empty || receitaService.Id != null) 
+                {
+                    await serviceReceita.Update(receitaService);
+                    return Ok();
+                }
                 await serviceReceita.AddSave(receitaService);
                 return Ok();
             }

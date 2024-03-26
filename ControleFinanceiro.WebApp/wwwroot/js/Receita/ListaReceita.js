@@ -13,7 +13,7 @@ var DataContractStatus = function () {
                 type: 'remote',
                 source: {
                     read: {
-                        url: '/api/ApiDespesa/GetDespesa/'
+                        url: '/api/ApiReceita/GetReceita/'
                     }
                 },
                 pageSize: 10,
@@ -53,7 +53,7 @@ var DataContractStatus = function () {
                 {
 
                     field: 'periodo',
-                    title: 'Data da despesa',
+                    title: 'Data da receita',
                     sortable: 'asc',
                     type: 'text',
                     selector: false,
@@ -78,10 +78,10 @@ var DataContractStatus = function () {
                     autoHide: false,
                     template: function (item) {
                         return '\
-                            <a href="/Despesa/ConsultDespesa/'+ item.id + '" class="btn btn-sm btn-clean btn-icon mr-2">\
+                            <a href="/Receita/ConsultReceita/'+ item.id + '" class="btn btn-sm btn-clean btn-icon mr-2">\
                                 <i class="far fa-eye"></i>\
                             </a>\
-                            <a href="/Despesa/EditDespesa/'+ item.id + '" class="btn btn-sm btn-clean btn-icon mr-2 update">\
+                            <a href="/Receita/EditReceita/'+ item.id + '" class="btn btn-sm btn-clean btn-icon mr-2 update">\
                                 <i class="fas fa-pencil-alt"></i>\
                             </a>\
                              <a data-id="' + item.id + '" class="btn btn-sm btn-clean btn-icon mr-2 btn-deletar-item delete">\
@@ -111,7 +111,7 @@ var DataContractStatus = function () {
 
                     $.ajax({
                         method: 'POST',
-                        url: '/Api/ApiDespesa/DeleteDespesa/' + delet,
+                        url: '/Api/ApiReceita/DeleteReceita/' + delet,
                     }).done(function (response) {
 
                         Swal.fire({
