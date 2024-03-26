@@ -29,6 +29,11 @@ namespace ControleFinanceiro.WebApp.API
         {
             try
             {
+                if (serviceDespesa.Id != Guid.Empty || serviceDespesa.Id != null)
+                {
+                    await service.Update(serviceDespesa);
+                    return Ok();
+                }
                 await service.AddSave(serviceDespesa);
                 return Ok();
             }
@@ -45,9 +50,10 @@ namespace ControleFinanceiro.WebApp.API
         {
             try
             {
-                if (Id != Guid.Empty)
+                var despesa = await service.GetById(Id);
+                if (despesa != null)
                 {
-                  await service.MarkDeleted(Id);
+                  await service.MarkDeleted(despesa);
                 }
                 
                 return Ok();

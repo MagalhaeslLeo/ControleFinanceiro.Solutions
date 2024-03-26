@@ -61,7 +61,7 @@ var frmSave = (function () {
         var post = {};
 
         post = {
-            id: $('[name="Id"]').val || null,
+            id: $('[name="id"]').val() || null,
             descricao: $('[name="descricao"]').val() || null,
             periodo: periodoFormatado,
             valor: $('[name="valor"]').val() || null
@@ -124,6 +124,7 @@ var frmSave = (function () {
             if ($('#action').val() === 'Consult') {
                 $('.readOnly').attr('readonly', 'readonly');
                 $('.readOnly').prop("disabled", true);
+                $('.readOnly').css('background-color', '#EBEBE4');
                 $('.btnHide').hide();
                 $('a.voltar').text('Voltar');
             }

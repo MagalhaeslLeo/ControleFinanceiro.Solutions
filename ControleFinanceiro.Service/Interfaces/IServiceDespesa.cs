@@ -10,7 +10,7 @@ namespace ControleFinanceiro.Service.Interfaces
     public interface IServiceDespesa
     {
         Task AddSave(DespesaService despesa);
-        Task MarkDeleted(Guid Id);
+        Task MarkDeleted(DespesaService despesa);
 
         Task<IEnumerable<DespesaService>> GetAll();
 
