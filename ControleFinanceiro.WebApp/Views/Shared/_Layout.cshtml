@@ -20,6 +20,7 @@
     <link href="~/assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.6" rel="stylesheet" type="text/css" />
     <link href="~/assets/css/style.bundle.css?v=7.0.6" rel="stylesheet" type="text/css" />
     <link href="~/css/header-menu.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/layout.css" rel="stylesheet" type="text/css" />
     <link href="~/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
     <!--end::Global Theme Styles-->
@@ -37,6 +38,10 @@
 <!--begin::Body-->
 
 <body id="kt_body">
+    <div id="spinner-div" class="pt-5">
+        <div class="spinner-border text-primary" role="status">
+        </div>
+    </div>
     <!--begin::Main-->
     <!--begin::Header Mobile-->
     <div id="kt_header_mobile" class="header-mobile align-items-center  header-mobile-fixed ">
@@ -199,6 +204,28 @@
     <!--end::Page Scripts-->
 
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+            $('#spinner-div').show();
+            loadMenuSuspenso();
+            function loadMenuSuspenso() {
+                $.ajax({
+                    url: '/ModuloMenu/GetAllModuloMenuSuspenso',
+                    type: 'POST',
+                    success: function (response) {
+                        $('#navigator ul').html(response);
+                    },
+                    complete: function () {
+                        $('#spinner-div').hide();
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 <!--end::Body-->
 </html>
