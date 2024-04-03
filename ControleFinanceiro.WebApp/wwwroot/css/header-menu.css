@@ -5,13 +5,11 @@
 .color-default{
 	color: #ffffff !important;
 }
-a {
-	cursor: pointer;
-}
 .header-icons {
 	display: flex;
 	width: 100px;
 	margin-top: 0.46rem;
+	cursor: pointer;
 }
 .header-icons-a i{
 	color: #fff;
