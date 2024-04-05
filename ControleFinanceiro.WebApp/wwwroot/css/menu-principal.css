@@ -133,3 +133,7 @@ header {
 .cad-menu {
 	cursor: pointer;
 }
+.aside-nav {
+	border: none !important;
+	background-color: #0e8080 !important;
+}
