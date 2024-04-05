@@ -55,8 +55,8 @@
                 url: '/' + controller + '/' + action,
                 type: 'GET',
                 success: function (response) {
-                    $('#dynamic-list').html(response);
-                      document.querySelector('.menu-nav').style.display = 'none';
+                    $('.dynamic-list').html(response);
+                      document.querySelector('#menu-lateral').style.display = 'none';
                 },
                 complete: function () {
                     $('#spinner-div').hide();

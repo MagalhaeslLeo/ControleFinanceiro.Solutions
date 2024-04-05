@@ -28,7 +28,8 @@
                 data: { module: moduleName },
                 success: function (response) {
                     $('#navigator-func ul').html(response);
-                   // document.querySelector('.menu-nav').style.display = 'none';
+                    document.querySelector('#navigator').style.display = 'none';
+                    document.querySelector('#menu-lateral').style.display = 'block';
                 },
                 error: function (error) {
                     console.log(error);
