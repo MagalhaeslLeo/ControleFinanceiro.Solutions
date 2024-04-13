@@ -1,7 +1,7 @@
 ﻿"use strict";
 // Class definition
 
-var DataContractStatus = function () {
+var DataTableList = function () {
     // Private functions
 
     // basic demo
@@ -145,5 +145,5 @@ var DataContractStatus = function () {
 }()
 
 jQuery(document).ready(function () {
-    DataContractStatus.init();
+    DataTableList.init();
 });

@@ -2,6 +2,7 @@
 using ControleFinanceiro.Service.ServiceEntity;
 using ControleFinanceiro.Service.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Globalization;
 
 namespace ControleFinanceiro.WebApp.API
