@@ -17,7 +17,7 @@
 
         $('#icon-suspenso').click(function () {
             var moduleName = $(this).data('module');
-
+            document.querySelector('#menu-lateral').style.display = 'block';
             loadMenu(moduleName);
         });
 
