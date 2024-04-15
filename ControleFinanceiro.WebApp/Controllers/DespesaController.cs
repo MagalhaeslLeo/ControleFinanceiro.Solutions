@@ -13,8 +13,14 @@ namespace ControleFinanceiro.WebApp.Controllers
         {
             this.service = service;
         }
-        public IActionResult GetAllDespesa()
+        public IActionResult GetAllDespesa(string adicionarNull)
         {
+            if (string.IsNullOrEmpty(adicionarNull))
+            {
+                ViewBag.Layout = "_Layout";
+                return View("GetAllDespesa");
+            }
+            ViewBag.Layout = null;
             return View("GetAllDespesa");
         }
 

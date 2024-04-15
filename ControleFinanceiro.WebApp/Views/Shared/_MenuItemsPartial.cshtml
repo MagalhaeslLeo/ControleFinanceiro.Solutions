@@ -13,19 +13,19 @@
 {
     @if (menuItem.UrlModule == "Cadastro" && !cadastroDisplayed)
     {
-        <p class="titulo-menu"> Cadastros </p>
+        @*<p class="titulo-menu"> Cadastros </p>*@
         cadastroDisplayed = true;
     }
 
     @if (menuItem.UrlModule == "Administrativo" && !administrativoDisplayed)
     {
-        <p class="titulo-menu"> Administração </p>
+        @*<p class="titulo-menu"> Administração </p>*@
         administrativoDisplayed = true;
     }
 
     @if (menuItem.UrlModule == "Financeiro" && !financeiroDisplayed)
     {
-        <p class="titulo-menu"> Finanças </p>
+        @*<p class="titulo-menu"> Finanças </p>*@
         financeiroDisplayed = true;
     }
 
@@ -46,13 +46,16 @@
 
             var controller = $(this).data('controller');
             var action = $(this).data('action');
+            var adicionarnull = "adicionarNull";
 
-            loadPartialView(controller, action);
+            loadPartialView(controller, action, adicionarnull);
         });
 
-        function loadPartialView(controller, action) {
+        function loadPartialView(controller, action, adicionarnull) {
+
+            var url = '/' + controller + '/' + action + '?adicionarNull=' + encodeURIComponent(adicionarnull);
             $.ajax({
-                url: '/' + controller + '/' + action,
+                url: url,
                 type: 'GET',
                 success: function (response) {
                     $('.dynamic-list').html(response);
