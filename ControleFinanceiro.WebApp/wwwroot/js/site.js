@@ -2,3 +2,7 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+$('.showModalButton4').on('click', function () {
+    var targetId = $(this).data('target');
+    $(targetId).modal('show');
+})

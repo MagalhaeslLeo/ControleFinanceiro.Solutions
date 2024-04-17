@@ -13,7 +13,7 @@
                     </h3>
 
                     <div class="card-toolbar">
-                        <a href="@Url.Action("CreateDespesa", "Despesa")"><i class="fas fa-plus"></i> Adicionar</a>
+                        <a data-target="#modalDespesa" data-toggle="tooltip" data-placement="top" data-original-title="Nova Despesa" class="showModalButton4" data-url="@Url.Action("CreateDespesa")"><i class="fas fa-plus"></i> Adicionar</a>
                     </div>
 
                 </div>
@@ -29,7 +29,8 @@
         </div>
     </div>
 </div>
-
+@await Html.PartialAsync("_CreateDespesa", new ControleFinanceiro.Service.ServiceEntity.DespesaService())
+<script src="~/js/site.js"></script>
 <script src="~/js/Despesa/ListaDespesa.js"></script>
 
 @section Scripts {

@@ -35,20 +35,20 @@ namespace ControleFinanceiro.WebApp.Controllers
         {
             ViewBag.Id = id;
             ViewBag.Action = "Consult";
-            return View("CreateDespesa");
+            return View("_CreateDespesa");
         }
 
         // GET: DespesaController/Create
         public IActionResult CreateDespesa()
         {
-            return View("CreateDespesa");
+            return PartialView("_CreateDespesa");
         }
 
         public IActionResult EditDespesa(Guid Id)
         {
             ViewBag.Id = Id;
             ViewBag.Action = "Edit";
-            return View("CreateDespesa");
+            return View("_CreateDespesa");
         }
 
     }

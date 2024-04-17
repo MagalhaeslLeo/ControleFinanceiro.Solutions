@@ -78,10 +78,10 @@ var DataTableList = function () {
                     autoHide: false,
                     template: function (item) {
                         return '\
-                            <a href="/Despesa/ConsultDespesa/'+ item.id + '" class="btn btn-sm btn-clean btn-icon mr-2">\
+                            <a data-target="#modalDespesa" data-toggle="tooltip" data-placement="top" data-original-title="Consultar Despesa" class="showModalButton4" href="/Despesa/ConsultDespesa/'+ item.id + '" class="btn btn-sm btn-clean btn-icon mr-2">\
                                 <i class="far fa-eye"></i>\
                             </a>\
-                            <a href="/Despesa/EditDespesa/'+ item.id + '" class="btn btn-sm btn-clean btn-icon mr-2 update">\
+                            <a data-target="#modalDespesa" data-toggle="tooltip" data-placement="top" data-original-title="Editar Despesa" class="showModalButton4" href="/Despesa/EditDespesa/'+ item.id + '" class="btn btn-sm btn-clean btn-icon mr-2 update">\
                                 <i class="fas fa-pencil-alt"></i>\
                             </a>\
                              <a data-id="' + item.id + '" class="btn btn-sm btn-clean btn-icon mr-2 btn-deletar-item delete">\
