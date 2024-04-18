@@ -30,7 +30,7 @@ namespace ControleFinanceiro.WebApp.API
         {
             try
             {
-                if (serviceDespesa.Id != Guid.Empty || serviceDespesa.Id != null)
+                if (serviceDespesa.Id != null)
                 {
                     await service.Update(serviceDespesa);
                     return Ok();

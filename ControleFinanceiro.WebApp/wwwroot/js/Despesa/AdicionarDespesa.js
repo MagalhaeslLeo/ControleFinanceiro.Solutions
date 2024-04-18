@@ -48,9 +48,10 @@ jQuery(document).ready(function () {
 });
 
 var frmSave = (function () {
-  
-    $('#btnSalvar').on('click', function () {
 
+    
+    $('#btnSalvar').on('click', function () {
+        debugger;
         var periodoDate = $('[name="periodo"]').val();
         // Criando novo objeto do tipo Date com o valor vindo do formulário e colocado na variável periodoValue
 
@@ -59,7 +60,7 @@ var frmSave = (function () {
         // Convertendo o valor do objeto do tipo Date para um objeto do tipo DateTime
         var periodoFormatado = periodoValue ? periodoValue.toISOString() : null;
         var post = {};
-
+        debugger;
         post = {
             id: $('[name="id"]').val() || null,
             descricao: $('[name="descricao"]').val() || null,
