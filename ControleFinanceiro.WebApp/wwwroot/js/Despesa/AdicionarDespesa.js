@@ -88,7 +88,7 @@ var frmSave = (function () {
                         confirmButton: "btn btn-success"
                     }
                 }).then(function () {
-                    window.location.href = "/Despesa/GetAllDespesa";
+                    $('#kt_datatable').KTDatatable('reload');
                 });
             } else {
                 Swal.fire({
@@ -101,7 +101,7 @@ var frmSave = (function () {
                         confirmButton: "btn btn-success"
                     }
                 }).then(function () {
-                    window.location.href = "/Despesa/GetAllDespesa";
+                    $('#kt_datatable').KTDatatable('reload');
                 });
             }
 
