@@ -78,15 +78,16 @@ var DataTableList = function () {
                     autoHide: false,
                     template: function (item) {
                         return '\
-                            <a data-target="#modalDespesa" data-toggle="tooltip" data-placement="top" data-original-title="Consultar Despesa" class="showModalButton4" href="/Despesa/ConsultDespesa/'+ item.id + '" class="btn btn-sm btn-clean btn-icon mr-2">\
+                            <a class="showModalButton4 btn btn-sm btn-clean btn-icon mr-2" data-toggle="tooltip" data-placement="top" data-original-title="Consultar" data-target="#modalConsultDespesa_@item.Id" data-url="@Url.Action("ConsultDespesa", new { id = item.Id})">\
                                 <i class="far fa-eye"></i>\
                             </a>\
-                            <a data-target="#modalDespesa" data-toggle="tooltip" data-placement="top" data-original-title="Editar Despesa" class="showModalButton4" href="/Despesa/EditDespesa/'+ item.id + '" class="btn btn-sm btn-clean btn-icon mr-2 update">\
+                            <a data-target="#modalDespesa" data-toggle="tooltip" data-placement="top" data-original-title="Editar Despesa" class="showModalButton4 btn btn-sm btn-clean btn-icon mr-2 update" href="/Despesa/EditDespesa/' + item.id + '">\
                                 <i class="fas fa-pencil-alt"></i>\
                             </a>\
                              <a data-id="' + item.id + '" class="btn btn-sm btn-clean btn-icon mr-2 btn-deletar-item delete">\
                              <i class="fas fa-trash-alt"></i>\
                             </a>';
+
                     },
 
 

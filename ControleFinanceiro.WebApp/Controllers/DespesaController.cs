@@ -35,7 +35,7 @@ namespace ControleFinanceiro.WebApp.Controllers
         {
             ViewBag.Id = id;
             ViewBag.Action = "Consult";
-            return View("_CreateDespesa");
+            return View("_ConsultDespesa");
         }
 
         // GET: DespesaController/Create
