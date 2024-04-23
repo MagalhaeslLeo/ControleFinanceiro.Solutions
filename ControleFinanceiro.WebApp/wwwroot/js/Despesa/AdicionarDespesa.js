@@ -49,6 +49,9 @@ jQuery(document).ready(function () {
 
 var frmSave = (function () {
 
+    $('#btnCancelar').on('click', function () {
+        $('#modalDespesa').modal('hide');
+    });
     
     $('#btnSalvar').on('click', function () {
         debugger;
@@ -76,37 +79,54 @@ var frmSave = (function () {
             data: json,
             contentType: 'application/json',
         }).done(function (response) {
-
             if (response === true) {
+                // Caso a despesa já esteja cadastrada
                 Swal.fire({
-                    title: "Negado !",
-                    text: "Despesa já Cadastrada",
+                    title: "Negado!",
+                    text: "Despesa já cadastrada",
                     icon: "error",
                     buttonsStyling: false,
-                    confirmButtonText: "Ok!",
+                    confirmButtonText: "Ok",
                     customClass: {
                         confirmButton: "btn btn-success"
                     }
                 }).then(function () {
+                    // Fechar o modal
+                    $('#modalDespesa').modal('hide');
+                    // Limpar os campos do modal
+                    $('[name="id"]').val('');
+                    $('[name="descricao"]').val('');
+                    $('[name="periodo"]').val('');
+                    $('[name="valor"]').val('');
+                    // Recarregar os dados na tabela, se necessário
                     $('#kt_datatable').KTDatatable('reload');
                 });
             } else {
+                // Caso a despesa seja cadastrada com sucesso
                 Swal.fire({
-                    title: "Concluido!",
-                    text: "Com Sucessso",
+                    title: "Concluído!",
+                    text: "Despesa cadastrada com sucesso",
                     icon: "success",
                     buttonsStyling: false,
-                    confirmButtonText: "Ok!",
+                    confirmButtonText: "Ok",
                     customClass: {
                         confirmButton: "btn btn-success"
                     }
                 }).then(function () {
+                    // Fechar o modal
+                    $('#modalDespesa').modal('hide');
+                    // Limpar os campos do modal
+                    $('[name="id"]').val('');
+                    $('[name="descricao"]').val('');
+                    $('[name="periodo"]').val('');
+                    $('[name="valor"]').val('');
+                    // Recarregar os dados na tabela, se necessário
                     $('#kt_datatable').KTDatatable('reload');
                 });
             }
-
         });
     });
+
 
     if ($('#Id').val() !== '') {
         $.ajax({
